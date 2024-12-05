@@ -18,15 +18,19 @@
 </form>
 <?php
 
-    $username = $_REQUEST['usrnm'] ?? '';
-    $password = $_REQUEST['passwd'] ?? '';
+$db = 'C:\xampp\htdocs\Projektarbeit\database\projekt.sqlite';
+$pdo = new \PDO($db);
 
-    if ($username == '') {
-        echo"Bitte erstellen sie ein Benutzernamen";
-    }
-    if ($password == '') {
-        echo"Bitte geben sie ein Valides Passwort ein";
-    }
+
+$username = $_REQUEST['usrnm'] ?? '';
+$password = $_REQUEST['passwd'] ?? '';
+
+if ($username == '') {
+    echo"Bitte erstellen sie ein Benutzernamen";
+}
+if ($password == '') {
+    echo"Bitte geben sie ein Valides Passwort ein";
+}
 // Funktion um Daten in die Datenbank einzutragen
 
 ?>
