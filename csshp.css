@@ -2,12 +2,6 @@ body {
     font-family: Helvetica;
 }
 
-.navbar {
-    display: inline;
-    background-color: #1a1a1a;
-    font-size: 30px;
-}
-
 li {
     float: left;
 }
