@@ -3,36 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="user.css">
 </head>
 <body>
-    <form action="">
-        <h2>Login</h2>
-        <label for="username">Gib deinen Nutzernamen ein:</label>
-        <input id="usrnm" name="usrnm" type="text" required>
+    <form class="maincontainer" action="">
+        <h2>Log In Seite</h2> 
+        <label for="username">Bitte gib deinen Benutzernamen ein:</label>
+        <input id="username" name="username" type="text" placeholder="Benutzername" required> <br>
 
-        <label for="passwd">Gib dein Passwort ein:</label>
-        <input id="pswd" name="passwd" type="password" required>
+        <label for="passwd">Bitte gib dein Passwort ein:</label>
+        <input id="passwort" name="passwort" type="password" placeholder="Passwort" required> <br>
 
-        <button type="submit">Log in</button>
+        <button type="submit">Einloggen</button> <br>
 
-        <label for="noaccount">Noch keinen Account?</label>
+        <p>Noch keinen Account?</p>
         <a href="register.php">Hier geht es zur Registrierung</a>
     </form>
-
-    <?php
-    $username = $_REQUEST['usrnm'] ?? '';
-    $password = $_REQUEST['passwd'] ?? '';
-
-    if ($username == '') {
-        echo"Bitte geben sie ihr Benutzernamen ein";
-    }
-    if ($password == '') {
-        echo"Bitte geben sie ihr Passwort ein";
-    }
-    
-// Funktion um zu Überprüfen ob Login und Passwort Korrekt sind
-// Funktion um eingelogt zu werden
-    
-    ?>
 </body>
 </html>
