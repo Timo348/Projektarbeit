@@ -11,7 +11,7 @@
         <label for="username">Bitte gib deinen Benutzernamen ein:</label>
         <input id="username" name="username" type="text" placeholder="Benutzername" required> <br>
 
-        <label for="passwd">Bitte gib dein Passwort ein:</label>
+        <label for="password">Bitte gib dein Passwort ein:</label>
         <input id="passwort" name="passwort" type="password" placeholder="Passwort" required> <br>
 
         <button type="submit">Einloggen</button> <br>
