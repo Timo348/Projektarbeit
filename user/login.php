@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="../nav.css">
 </head>
 <body>
+<nav>
+    <a href="../notes/notizen.php">Notizen</a>
+    <a href="../todo/todo.php">To-Do</a>
+    <a href="../event/event.php">Event-Countdown</a>
+    <a href="../user/login.php">Login</a>
+</nav>
     <form class="maincontainer" action="">
         <h2>Log In Seite</h2> 
         <label for="username">Bitte gib deinen Benutzernamen ein:</label>
