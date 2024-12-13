@@ -22,8 +22,8 @@ body {
 
 input {
     margin-left: 35px;
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 400px;
     border-radius: 10px;
     border-style: none;
@@ -55,8 +55,9 @@ button {
     background-color: #4E1E84;
     border-radius: 10px;
     border-style: none;
-    margin-left: 25px;
-    margin-bottom: 40px;
+    margin-left: auto;
+    margin-left: 35px;
+    width: 400px;
 }
 
 p , a {
