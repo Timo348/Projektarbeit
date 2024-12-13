@@ -11,8 +11,8 @@ body {
 
 .maincontainer {
     width: 500px;
-    height: 720px;
-    background-color: #65209e;
+    height: 480px;
+    background-color: #3f0072;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
@@ -31,13 +31,6 @@ input {
     color: black;
 }
 
-label {
-    margin-left: 25px;
-    border-radius: 10px;
-    background-color: #4E1E84;
-    padding: 10px;
-}
-
 h2 {
     padding: 10px;
     text-align: center;
@@ -47,7 +40,7 @@ h2 {
     width: 250px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -55,9 +48,10 @@ button {
     background-color: #4E1E84;
     border-radius: 10px;
     border-style: none;
-    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
     margin-left: 35px;
-    width: 400px;
+    width: 420px;
 }
 
 p , a {
