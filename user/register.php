@@ -23,9 +23,9 @@ ini_set('display_errors', '1');
     $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
-$username = trim($_REQUEST['usrnm']);
-$password = trim($_REQUEST['passwd']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_REQUEST['usrnm']);
+    $password = trim($_REQUEST['passwd']);
 
     try{
         // Benutzer in der Datenbank hinzufügen
@@ -43,7 +43,7 @@ $password = trim($_REQUEST['passwd']);
             echo "Ein Fehler ist aufgetreten :/". $e->getMessage();
         }
     }
-
+}
 ?>
 </body>
 </html>
