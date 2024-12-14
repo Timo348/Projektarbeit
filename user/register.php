@@ -4,46 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../nav.css">
 </head>
 <body>
+<nav>
+    <a href="../notes/notizen.php">Notizen</a>
+    <a href="../todo/todo.php">To-Do</a>
+    <a href="../event/event.php">Event-Countdown</a>
+    <a href="../user/login.php">Login</a>
+</nav>
+<div class="maincontainer">
 <form action="" method="POST">
         <h2>Registrierung</h2>
-        <label for="username">Gib deinen Nutzernamen ein:</label>
-        <input id="usrnm" name="usrnm" type="text" required>
+        <input id="usrnm" name="usrnm" type="text" placeholder="Benutzernamen" required>
 
-        <label for="passwd">Gib dein Passwort ein:</label>
-        <input id="passwd" name="passwd" type="password" required>
+        <input id="passwd" name="passwd" type="password" placeholder="Passwort" required>
 
         <button type="submit">Registerstrierung Abschließen! :D</button>
 </form>
 <?php
 ini_set('display_errors', '1');
 
-// Verbindung zur SQLite-Datenbank herstellen
+
     $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $username = trim($_REQUEST['usrnm']);
     $password = trim($_REQUEST['passwd']);
 
-    try{
-        // Benutzer in der Datenbank hinzufügen
+    try {
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':password', $password);
         $statement->execute();
 
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
-    } catch(PDOException $e){
-        // Fehler behandeln, z.B. wenn der Benutzername schon existiert
-        if ($e->getCode()=='23000'){
+    } catch(PDOException $e)    {
+        // Fehler behandeln, z.B. wenn der Benutztername schon existiert
+        if ($e->getCode()=='23000') {
             echo "Benutzername ist bereits registriert.";
-        } else{
+        } 
+        else    {
             echo "Ein Fehler ist aufgetreten :/". $e->getMessage();
         }
     }
 }
 ?>
+</div>
 </body>
 </html>
