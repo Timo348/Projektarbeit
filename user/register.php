@@ -6,20 +6,22 @@
     <title>Register</title>
 </head>
 <body>
-<form action="">
+<form action="" method="POST">
         <h2>Registrierung</h2>
         <label for="username">Gib deinen Nutzernamen ein:</label>
         <input id="usrnm" name="usrnm" type="text" required>
 
         <label for="passwd">Gib dein Passwort ein:</label>
-        <input id="pswd" name="passwd" type="password" required>
+        <input id="passwd" name="passwd" type="password" required>
 
         <button type="submit">Registerstrierung Abschließen! :D</button>  
 </form>
 <?php
+ini_set('display_errors', '1');
 
 // Verbindung zur SQLite-Datenbank herstellen
     $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Prüfen, ob das Formular abgesendet wurde
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
