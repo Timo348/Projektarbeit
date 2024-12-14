@@ -6,20 +6,22 @@
     <title>Register</title>
 </head>
 <body>
-<form action="">
+<form action="" method="POST">
         <h2>Registrierung</h2>
         <label for="username">Gib deinen Nutzernamen ein:</label>
         <input id="usrnm" name="usrnm" type="text" required>
 
         <label for="passwd">Gib dein Passwort ein:</label>
-        <input id="pswd" name="passwd" type="password" required>
+        <input id="passwd" name="passwd" type="password" required>
 
-        <button type="submit">Registerstrierung Abschließen! :D</button>  
+        <button type="submit">Registerstrierung Abschließen! :D</button>
 </form>
 <?php
+ini_set('display_errors', '1');
 
 // Verbindung zur SQLite-Datenbank herstellen
-$db = new PDO('C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.sqbpro');
+    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 $username = trim($_REQUEST['usrnm']);
@@ -33,7 +35,7 @@ $password = trim($_REQUEST['passwd']);
         $statement->execute();
 
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
-    } catch(PDOExeption $e){
+    } catch(PDOException $e){
         // Fehler behandeln, z.B. wenn der Benutzername schon existiert
         if ($e->getCode()=='23000'){
             echo "Benutzername ist bereits registriert.";
@@ -41,7 +43,6 @@ $password = trim($_REQUEST['passwd']);
             echo "Ein Fehler ist aufgetreten :/". $e->getMessage();
         }
     }
-// Fehler. hier ist link für lösung: https://chatgpt.com/c/675c3540-3234-8011-ac85-18eaaf0eadfa
 
 ?>
 </body>
