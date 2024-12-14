@@ -19,13 +19,14 @@
 <?php
 
 // Verbindung zur SQLite-Datenbank herstellen
-$db = new PDO('C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.sqbpro');
+    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
 
+// Prüfen, ob das Formular abgesendet wurde
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['usrnm']);
+    $password = trim($_POST['passwd']);
 
-$username = trim($_REQUEST['usrnm']);
-$password = trim($_REQUEST['passwd']);
-
-    try{
+    try {
         // Benutzer in der Datenbank hinzufügen
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
         $statement->bindParam(':username', $username);
@@ -33,16 +34,15 @@ $password = trim($_REQUEST['passwd']);
         $statement->execute();
 
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
-    } catch(PDOExeption $e){
+    } catch (PDOException $e) {
         // Fehler behandeln, z.B. wenn der Benutzername schon existiert
-        if ($e->getCode()=='23000'){
+        if ($e->getCode() == '23000') {
             echo "Benutzername ist bereits registriert.";
-        } else{
-            echo "Ein Fehler ist aufgetreten :/". $e->getMessage();
+        } else {
+            echo "Ein Fehler ist aufgetreten: " . $e->getMessage();
         }
     }
-// Fehler. hier ist link für lösung: https://chatgpt.com/c/675c3540-3234-8011-ac85-18eaaf0eadfa
-
+}
 ?>
 </body>
 </html>
