@@ -23,12 +23,11 @@ ini_set('display_errors', '1');
     $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Prüfen, ob das Formular abgesendet wurde
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['usrnm']);
-    $password = trim($_POST['passwd']);
 
-    try {
+$username = trim($_REQUEST['usrnm']);
+$password = trim($_REQUEST['passwd']);
+
+    try{
         // Benutzer in der Datenbank hinzufügen
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
         $statement->bindParam(':username', $username);
@@ -36,15 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->execute();
 
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
-    } catch (PDOException $e) {
+    } catch(PDOException $e){
         // Fehler behandeln, z.B. wenn der Benutzername schon existiert
-        if ($e->getCode() == '23000') {
+        if ($e->getCode()=='23000'){
             echo "Benutzername ist bereits registriert.";
-        } else {
-            echo "Ein Fehler ist aufgetreten: " . $e->getMessage();
+        } else{
+            echo "Ein Fehler ist aufgetreten :/". $e->getMessage();
         }
     }
-}
+
 ?>
 </body>
 </html>
