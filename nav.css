@@ -15,6 +15,7 @@ nav {
 }
 
 .homebutton {
+    position: absolute;
     display: inline-block;
     background-color: #54119a;
     width: 60px;
@@ -23,6 +24,9 @@ nav {
     text-align: center;
     text-decoration: none;
     line-height: 60px;
+    margin-right: 1800px;
+    margin-top: 20px;
+    border-radius: 20px;
 }
 
 nav a {
