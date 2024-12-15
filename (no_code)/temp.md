@@ -23,5 +23,3 @@ https://www.w3schools.com/css/css_positioning.asp
 Durch Quellen weiß position vom Homebutton auf Absolute stellen
 Jetzt ist er Mittig im nav also einen Margin right einstellen 
 Margin top noch überarbeiten da er kleiner als die anderen Elemente ist somit nicht mittig ist (diesen auf 20px)
-Online nach Icon/Emoji Gesucht
-Für Emoji entschieden da einfacher
