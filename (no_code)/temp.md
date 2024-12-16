@@ -16,3 +16,8 @@ dannach execute statement
 https://www.php.net/manual/en/pdostatement.fetch.php
 neue variabel $result erstellen und dort einen fetch machen um werte als array auszugeben (mit print_r)
 Funktioniert nicht, Behebung: parameter bei pindparam auf username ändern da in der tabelle es username heißt und nicht user
+ES FUNKTUINIERTE ALLES NICHT EGAL WAS VAR DUMP BAM BUM BIM ABER DIE REQUEST METHODE WAR NICHT AUF POST ICH KÖNNTE WEINEN
+Jetzt müssen wir mit einer if abfrage abfragen ob die variabel $result besetzt ist 
+und dannach die Variabeln aus dem Array ziehen $datauser = $result['user']; $datapass = $result['password']; 
+https://www.php.net/manual/en/function.password-verify.php 
+Um zu überprüfen ob das passwort übereinstimmt machen wir ejtzt eifnach eine if und so ... kb mehr ich hör auf
