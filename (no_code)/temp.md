@@ -11,3 +11,4 @@ in den "" Schreiben wir erstmal ein SELECT dann FROM und die Table in unserem Fa
 Jetzt müssen wir noch definieren was wir von der Table haben möchten
 wir möchte den Wert password und userid von der Table haben damit wir abprüfen können ob das Eingegebene Passwort mit dem Eingegebenen übereinstimmt
 Nun müssen wir noch Bestimmen von was es das Passwort nehmen soll dies erfolgt dann mit WHERE user = :Variabel name
+bindparam etc blabla
