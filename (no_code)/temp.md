@@ -1,25 +1,13 @@
 # Temporäre Notizen markdown datei
 
-## Login und Register
-nav bar eingefügt wie bei login
-nav.css mit link tag verknüpft wie bei login
-alle classes übernommen von dem login
-Klasse maincontainer zur form hinzugefügt
-labels wieder entfernt da wir diese nicht benötigen
-placeholder geschrieben damit man weiß was worein muss
-Erster fehler: echo geht außerhalb vom maincontainer daher statt nur der form die class maincontainer geben eine div erstellt die auch das php skript miteinbehält
-Dies Funktionert auch.
-
-
-## Home Button
-Grund warum home button (kein weg zum button)
-neuen a tag erstmal erstellt wo erstmal noch H steht aber wir ein Icon benutzen wollen später
-a tag in einer eigenen class damit er Links sortiert ist und nicht neben den Anderen a tags
-genau wie bei nav a farbe text align decoration eingestellt, nur größe auf 60x60 gestellt
-problem: ist immernoch zu nah an den anderen Elementen da wir es am linken bildschirmrand haben wollen
-Fehlerbehebung:
-https://developer.mozilla.org/en-US/docs/Web/CSS/position
-https://www.w3schools.com/css/css_positioning.asp
-Durch Quellen weiß position vom Homebutton auf Absolute stellen
-Jetzt ist er Mittig im nav also einen Margin right einstellen 
-Margin top noch überarbeiten da er kleiner als die anderen Elemente ist somit nicht mittig ist (diesen auf 20px)
+## Register
+Session Starten(keine ahnung was es genau macht aber ist das wenn man einmal eingeloggt ist man eingeloggt bleibt (glaube ich))
+Datenbank verknüpfung vom Register übernommen, variablen mit post bekommen auch übernommen vom Register
+Das Erste Statement übernommen wieder aber dies ist ein Insert into account aber wir wollen diesmal ja keine Informationen in die Datenbank einsetzen sondern welche Rausholen (das Passwort und den User)
+Deswegen erstmal alles was in der "" Steht gelöscht
+Quelle:  https://www.tutorialspoint.com/sqlite/sqlite_select_query.htm https://www.php-einfach.de/experte/php-codebeispiele/loginscript/  
+für Zeile 10-
+in den "" Schreiben wir erstmal ein SELECT dann FROM und die Table in unserem Fall die Table account
+Jetzt müssen wir noch definieren was wir von der Table haben möchten
+wir möchte den Wert password und userid von der Table haben damit wir abprüfen können ob das Eingegebene Passwort mit dem Eingegebenen übereinstimmt
+Nun müssen wir noch Bestimmen von was es das Passwort nehmen soll dies erfolgt dann mit WHERE user = :Variabel name
