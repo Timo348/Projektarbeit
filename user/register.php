@@ -31,8 +31,8 @@ ini_set('display_errors', '1');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
-    $username = trim($_REQUEST['usrnm']);
-    $password = trim($_REQUEST['passwd']);
+    $username = trim($_POST['usrnm']);
+    $password = trim($_POST['passwd']);
 
     try {
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
