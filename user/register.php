@@ -40,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
         $statement->bindParam(':password', $password);
         $statement->execute();
 
+        
+
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
     } catch(PDOException $e)    {
         // Fehler behandeln, z.B. wenn der Benutztername schon existiert

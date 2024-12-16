@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../nav.css">
 </head>
 <body>
-    <!--
+
 <nav>
     <a href="../notes/notizen.php">Notizen</a>
     <a href="../todo/todo.php">To-Do</a>
@@ -23,26 +23,25 @@
         <p>Noch keinen Account?</p>
         <a href="register.php">Hier geht es zur Registrierung</a>
     </form>
--->
+
 <?php
 ini_set('display_errors', '1');
-
 
 $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
-    $username = trim($_REQUEST['username']);
-    $password = trim($_REQUEST['passwort']);
+    $user = trim($_REQUEST['username']);
+    $pass = trim($_REQUEST['passwort']);
 
-    $statement = $db->prepare("SELECT * FROM account WHERE user = :username");
-    $result = $statement->fetch(PDO::FETCH_ASSOC); // Holt die erste Zeile als assoziatives Array
-    $statement->bindParam(':username', $datausername);
-    $statement->bindParam(':password', $datapassword);
-    $statement->bindParam(':userid', $dataid);
+    $statement = $db->prepare("SELECT * FROM account WHERE username = :username");
+    $statement->bindParam(':username', $user);
     $statement->execute();
-    echo"$datapassword $dataid $datausername";
+
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    print_r($result);
 }
-    ?>
+?>
+
 </body>
 </html>
