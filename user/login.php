@@ -9,7 +9,7 @@
 <body>
 
 <nav>
-    <a class="homebutton" href="index.html">🏠</a>
+    <a class="homebutton" href="../index.html">🏠</a>
     <a href="../notes/notizen.php">Notizen</a>
     <a href="../todo/todo.php">To-Do</a>
     <a href="../event/event.php">Timer</a>
