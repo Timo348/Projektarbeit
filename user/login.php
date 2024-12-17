@@ -14,7 +14,7 @@
     <a href="../event/event.php">Event-Countdown</a>
     <a href="../user/login.php">Login</a>
 </nav>
-    <form class="maincontainer" action="../index.html" method="POST">
+    <form class="maincontainer" action="" method="POST">
         <h2>Log In Seite</h2> 
         <input id="username" name="username" type="text" placeholder="Benutzername" required> <br>
         <input id="passwort" name="passwort" type="password" placeholder="Passwort" required> <br>
@@ -29,7 +29,7 @@
 session_start();
 ini_set('display_errors', '1');
 
-$db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
+$db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\Projektarbeit\database\projektdatenbank.db');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
@@ -48,10 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
         $datapass = $result['password']; 
 
         if ($datapass == $pass) {
-            die("Login erfolgreich");
+            // Eigentlich Session id zur user id zuweisen aber zum zeigen so lassen
+            die("Login erfolgreich"); 
         }
         else {
-            echo("irgendwass putt");
+            echo("Benutzername oder Passwort falsch");
         }
     }
 
