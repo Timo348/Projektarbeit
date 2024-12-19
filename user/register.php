@@ -9,9 +9,10 @@
 </head>
 <body>
 <nav>
+    <a class="homebutton" href="../index.html">🏠</a>
     <a href="../notes/notizen.php">Notizen</a>
     <a href="../todo/todo.php">To-Do</a>
-    <a href="../event/event.php">Event-Countdown</a>
+    <a href="../event/event.php">Timer</a>
     <a href="../user/login.php">Login</a>
 </nav>
 <div class="maincontainer">
@@ -26,19 +27,21 @@
 <?php
 ini_set('display_errors', '1');
 
-
-    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
+// Relativen dateipfad noch 
+    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\Projektarbeit\database\projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
-    $username = trim($_REQUEST['usrnm']);
-    $password = trim($_REQUEST['passwd']);
-
+    $username = trim($_POST['usrnm']);
+    $password = trim($_POST['passwd']);
+    // Passwort noch hashen
     try {
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':password', $password);
         $statement->execute();
+
+        
 
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
     } catch(PDOException $e)    {
