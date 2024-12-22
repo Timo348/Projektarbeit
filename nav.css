@@ -9,7 +9,7 @@ body {
 nav {
     background-color: #361c6a;
     width: 100%;
-    height: 70px;
+    height: 80px;
     justify-content: center;
     display: flex;
 }
@@ -18,13 +18,13 @@ nav {
     position: absolute;
     display: inline-block;
     background-color: #54119a;
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     color: white;
     text-align: center;
     text-decoration: none;
-    line-height: 45px;
-    margin-right: 1800px;
+    line-height: 60px;
+    margin-right: 1200px;
     margin-top: 10px;
     border-radius: 20px;
 }
@@ -33,12 +33,12 @@ nav a {
     display: inline-block;
     background-color: #54119a;
     width: 125px;
-    height: 50px;
+    height: 60px;
     font-size: 20px;
     color: white;
     text-align: center;
     text-decoration: none;
-    line-height: 50px;
+    line-height: 60px;
     margin-top: 10px;
     margin-left: 15px;
     margin-right: 15px;

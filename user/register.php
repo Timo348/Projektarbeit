@@ -9,6 +9,7 @@
 </head>
 <body>
 <nav>
+    <a class="homebutton" href="../index.html">🏠</a>
     <a href="../notes/notizen.php">Notizen</a>
     <a href="../todo/todo.php">To-Do</a>
     <a href="../event/event.php">Timer</a>
@@ -26,14 +27,14 @@
 <?php
 ini_set('display_errors', '1');
 
-
-    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
+// Relativen dateipfad noch 
+    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\Projektarbeit\database\projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $username = trim($_POST['usrnm']);
     $password = trim($_POST['passwd']);
-
+    // Passwort noch hashen
     try {
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
         $statement->bindParam(':username', $username);
