@@ -28,34 +28,32 @@
 
 <?php
 session_start();
-ini_set('display_errors', '1');
+ini_set('display_errors', '1'); 
 
 $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
+if ($_SERVER['REQUEST_METHOD'] === 'POST')  { 
     $user = trim($_POST['username']);
     $pass = trim($_POST['passwort']);
 
-    echo"";
-
-    $statement = $db->prepare("SELECT * FROM account WHERE username = :username");
+    $statement = $db->prepare("SELECT * FROM account WHERE username = :username"); // Wert aus der Tabelle account holen
     $statement->bindParam(':username', $user);
     $statement->execute();
 
-    $result = $statement->fetch(PDO::FETCH_ASSOC);
-    
+    $result = $statement->fetch(PDO::FETCH_ASSOC); // Tabelle als Array ausgeben
     if ($result) {
         $datapass = $result['password']; 
-
         if ($datapass == $pass) {
-            die("Login erfolgreich");
+            $_SESSION['sesuser'] = $result['username']; // Session werte vergeben
+            $_SESSION['sesid'] = $result['userid']; // Session werte vergeben
+            header('Location: ../index.html'); // Weiterleitung zur Startseite (hoffentlich auch mit Session werten)
         }
         else {
-            echo("irgendwass putt");
+            session_abort(); // Session abbrechen wenn Passwort falsch
+            echo"Irgendwas ist Falsch"; // Am besten eine richtige Fehlermeldung anzeigen lassen als Pop up
         }
     }
-
 }
 ?>
 
