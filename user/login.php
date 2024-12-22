@@ -11,10 +11,10 @@
 <nav>
     <a href="../notes/notizen.php">Notizen</a>
     <a href="../todo/todo.php">To-Do</a>
-    <a href="../event/event.php">Event-Countdown</a>
+    <a href="../event/event.php">Timer</a>
     <a href="../user/login.php">Login</a>
 </nav>
-    <form class="maincontainer" action="../index.html" method="POST">
+    <form class="maincontainer" action="" method="POST">
         <h2>Log In Seite</h2> 
         <input id="username" name="username" type="text" placeholder="Benutzername" required> <br>
         <input id="passwort" name="passwort" type="password" placeholder="Passwort" required> <br>

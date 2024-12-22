@@ -1,6 +1,6 @@
 # Temporäre Notizen markdown datei
 
-## Register
+## Login
 Session Starten(keine ahnung was es genau macht aber ist das wenn man einmal eingeloggt ist man eingeloggt bleibt (glaube ich))
 Datenbank verknüpfung vom Register übernommen, variablen mit post bekommen auch übernommen vom Register
 Das Erste Statement übernommen wieder aber dies ist ein Insert into account aber wir wollen diesmal ja keine Informationen in die Datenbank einsetzen sondern welche Rausholen (das Passwort und den User)
@@ -18,6 +18,6 @@ neue variabel $result erstellen und dort einen fetch machen um werte als array a
 Funktioniert nicht, Behebung: parameter bei pindparam auf username ändern da in der tabelle es username heißt und nicht user
 ES FUNKTUINIERTE ALLES NICHT EGAL WAS VAR DUMP BAM BUM BIM ABER DIE REQUEST METHODE WAR NICHT AUF POST ICH KÖNNTE WEINEN
 Jetzt müssen wir mit einer if abfrage abfragen ob die variabel $result besetzt ist 
-und dannach die Variabeln aus dem Array ziehen $datauser = $result['user']; $datapass = $result['password']; 
+und dannach die Variabeln aus dem Array ziehen $datauser = $result['user']; $datapass = $result['password'];
 https://www.php.net/manual/en/function.password-verify.php 
 Um zu überprüfen ob das passwort übereinstimmt machen wir ejtzt eifnach eine if und so ... kb mehr ich hör auf
