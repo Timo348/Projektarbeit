@@ -26,14 +26,17 @@
 </form>
 <?php
 ini_set('display_errors', '1');
-
-// Relativen dateipfad noch 
-    $db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\Projektarbeit\database\projektdatenbank.db');
+// Datenbankverbindung herstellen
+try {
+    $db = new PDO('sqlite:' . __DIR__ . '/../database/projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Datenbankverbindung fehlgeschlagen: " . $e->getMessage());
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $username = trim($_POST['usrnm']);
-    $password = trim($_POST['passwd']);
+    $password = password_hash(trim($_POST['passwd']), PASSWORD_BCRYPT);
     // Passwort noch hashen
     try {
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
@@ -41,16 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
         $statement->bindParam(':password', $password);
         $statement->execute();
 
-        
-
         echo "Registrierung war erfolgreich! Sie können sich jetzt anmelden.";
     } catch(PDOException $e)    {
-        // Fehler behandeln, z.B. wenn der Benutztername schon existiert
-        if ($e->getCode()=='23000') {
+        // Fehler behandeln, z.B. wenn der Benutzername schon existiert
+        if ($e->getCode() == '23000') {
             echo "Benutzername ist bereits registriert.";
-        } 
-        else    {
-            echo "Ein Fehler ist aufgetreten :/". $e->getMessage();
+        } else {
+            echo "Ein Fehler ist aufgetreten: " . $e->getMessage();
         }
     }
 }

@@ -29,13 +29,15 @@
 <?php
 session_start();
 ini_set('display_errors', '1'); 
-
-$db = new PDO('sqlite:C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.db');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-
+try {
+    $db = new PDO('sqlite:' . __DIR__ . '/../database/projektdatenbank.db');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Datenbankverbindung fehlgeschlagen: " . $e->getMessage());
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  { 
     $user = trim($_POST['username']);
-    $pass = trim($_POST['passwort']);
+    $pass = password_hash(trim($_POST['passwort']), PASSWORD_BCRYPT);
 
     $statement = $db->prepare("SELECT * FROM account WHERE username = :username"); // Wert aus der Tabelle account holen
     $statement->bindParam(':username', $user);
@@ -44,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $result = $statement->fetch(PDO::FETCH_ASSOC); // Tabelle als Array ausgeben
     if ($result) {
         $datapass = $result['password']; 
-        if ($datapass == $pass) {
+        if (password_verify($pass, $datapass)) {
             $_SESSION['sesuser'] = $result['username']; // Session werte vergeben
             $_SESSION['sesid'] = $result['userid']; // Session werte vergeben
             header('Location: ../index.html'); // Weiterleitung zur Startseite (hoffentlich auch mit Session werten)
