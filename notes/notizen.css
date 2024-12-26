@@ -1,0 +1,23 @@
+.maincontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.notiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 50px;
+}
+textarea {
+    resize: none;
+  }
+h2 {
+    text-align: center;
+}

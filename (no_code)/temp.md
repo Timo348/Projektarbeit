@@ -11,3 +11,15 @@ Jetzt müssen wir mit einer if abfrage abfragen ob die variabel $result besetzt 
 und dannach die Variabeln aus dem Array ziehen $datauser = $result['user']; $datapass = $result['password'];
 https://www.php.net/manual/en/function.password-verify.php 
 Um zu überprüfen ob das passwort übereinstimmt machen wir ejtzt eifnach eine if und so ... kb mehr ich hör auf
+
+## Notizen
+Nav rüber kopiert und verlinkt wieder
+Class Erstellt für alle Notizen in der Html dann eine div dafür
+Der class erstmal den display auf flex gestellt (https://www.w3schools.com/cssref/pr_class_display.php)
+die Flex Direction auf row/column
+justify content wieder center und align items auch
+Noch einen Margin (vorerst 20px Oben)
+Nun Noch eine Class erstellen (Notiz) die wird dann für jede Einzelne Notiz benutzt
+Neue div erstellt die Notiz heißt, dort erstmal eine Überschrift reingemacht eine form erstellt mit einer textarea (https://www.w3schools.com/tags/tag_textarea.asp) diese auf vorerst auf 30 cols und 10 rows eingestellt
+Einen button erstellt um zu speichern
+in der css datei für die textarea das resizing ausgestellt
