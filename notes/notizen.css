@@ -1,22 +1,48 @@
+
+* {
+    font-family: Helvetica;
+    font-size: 25px;
+    color: white;
+    /* border: greenyellow 1px solid; */
+}
+
+body {
+    background-color: #1a1a1a;
+}
+
+
 .maincontainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+
 }
+
 
 .notiz {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
-    margin: 50px;
+    width: 380px;
+    height: 450px;
+    margin: 40px;
+    background-color: #3f0072;
+    border-radius: 10px;
 }
+
 textarea {
     resize: none;
+    height: 250px;
+    width: 180px;
+    justify-content: center;
+    color: white;
+    background-color: #1a1a1a;
+    margin-left: 30px;
+    border: 0px;
+    border-radius: 5px;
   }
 h2 {
     text-align: center;

@@ -22,9 +22,48 @@
             <button type="submit">Änderungen Speichern</button>
         </form>
     </div>
-
-
-
+    <div class="notiz">
+        <h2>Notiz 1</h2> <!-- Bearbeiten button Hinzufügen -->
+        <form action="" method="POST" id="notiz2">
+            <textarea name="notiz" id="notiztext2" cols="30" rows="10"></textarea>
+            <button type="submit">Änderungen Speichern</button>
+        </form>
+    </div>
+    <div class="notiz">
+        <h2>Notiz 3</h2> <!-- Bearbeiten button Hinzufügen -->
+        <form action="" method="POST" id="notiz3">
+            <textarea name="notiz" id="notiztext3" cols="30" rows="10"></textarea>
+            <button type="submit">Änderungen Speichern</button>
+        </form>
+    </div>
+    <div class="notiz">
+        <h2>Notiz 4</h2> <!-- Bearbeiten button Hinzufügen -->
+        <form action="" method="POST" id="notiz4">
+            <textarea name="notiz" id="notiztext4" cols="30" rows="10"></textarea>
+            <button type="submit">Änderungen Speichern</button>
+        </form>
+    </div>
+    <div class="notiz">
+        <h2>Notiz 5</h2> <!-- Bearbeiten button Hinzufügen -->
+        <form action="" method="POST" id="notiz5">
+            <textarea name="notiz" id="notiztext5" cols="30" rows="10"></textarea>
+            <button type="submit">Änderungen Speichern</button>
+        </form>
+    </div>
+    <div class="notiz">
+        <h2>Notiz 6</h2> <!-- Bearbeiten button Hinzufügen -->
+        <form action="" method="POST" id="notiz6">
+            <textarea name="notiz" id="notiztext6" cols="30" rows="10"></textarea>
+            <button type="submit">Änderungen Speichern</button>
+        </form>
+    </div>
+    <div class="notiz">
+        <h2>Notiz 7</h2> <!-- Bearbeiten button Hinzufügen -->
+        <form action="" method="POST" id="notiz7">
+            <textarea name="notiz" id="notiztext7" cols="30" rows="10"></textarea>
+            <button type="submit">Änderungen Speichern</button>
+        </form>
+    </div>
 </div>
 
 
