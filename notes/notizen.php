@@ -1,71 +1,91 @@
+<?php
+
+// Abschnitt 1: Verbindung + Session
+
+try {
+    $db = new PDO('sqlite:' . __DIR__ . '/../database/projektdatenbank.db');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Datenbankverbindung fehlgeschlagen: " . $e->getMessage());
+}
+
+session_start();
+
+if (!isset($_SESSION['sesid'])) {
+    header("Location: ../user/login.php");
+    exit;
+}
+
+// Abschnitt 2: Funktion Notiz Erstellung
+
+function NotizSpeichern(PDO $db) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['neue_notiz'])) {
+        $userid = $_SESSION['sesid'];
+        $zeit = date('Y-m-d H:i:s');
+
+        $notenName = trim($_POST['notiz_name']);
+        $notenInhalt = trim($_POST['notiz_inhalt']);
+        $status = 1;
+
+        try {
+            $statement = $db->prepare("INSERT INTO notizen 
+                (userid, notiz_name, notiz_inhalt, notiz_erstellt, notiz_bearbeitet, notiz_status)
+                VALUES (:userid, :name, :inhalt, :erstellt, :bearbeitet, :status)");
+            $statement->bindParam(':userid', $userid);
+            $statement->bindParam(':name', $notenName);
+            $statement->bindParam(':inhalt', $notenInhalt);
+            $statement->bindParam(':erstellt', $zeit);
+            $statement->bindParam(':bearbeitet', $zeit);
+            $statement->bindParam(':status', $status);
+            $statement->execute();
+        } catch (PDOException $e) {
+            die("Notiz konnte nicht eingefügt werden: " . $e->getMessage());
+        }
+    }
+}
+
+NotizSpeichern($db);
+
+// Abschnitt 3: Notizen abrufen
+
+$userid = $_SESSION['sesid'];
+try {
+    $statementanzeige = $db->prepare("SELECT * FROM notizen 
+                                WHERE userid = :userid AND notiz_status = 1 
+                                ORDER BY notiz_bearbeitet DESC");
+    $statementanzeige->bindParam(':userid', $userid);
+    $statementanzeige->execute();
+    $notizen = $statementanzeige->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Fehler beim Abrufen der Notizen: " . $e->getMessage());
+}
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="notizen.css">
+    <title>Meine Notizen</title>
     <link rel="stylesheet" href="../nav.css">
 </head>
 <body>
-<nav>
-    <a href="../notes/notizen.php">Notizen</a>
-    <a href="todo.php">To-Do</a>
-    <a href="../event/event.php">Timer</a>
-    <a href="../user/login.php">Login</a>
-</nav>
-<div class="maincontainer">
-    <div class="notiz">
-        <h2>Notiz 1</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz1">
-            <textarea name="notiz" id="notiztext1" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-    <div class="notiz">
-        <h2>Notiz 1</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz2">
-            <textarea name="notiz" id="notiztext2" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-    <div class="notiz">
-        <h2>Notiz 3</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz3">
-            <textarea name="notiz" id="notiztext3" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-    <div class="notiz">
-        <h2>Notiz 4</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz4">
-            <textarea name="notiz" id="notiztext4" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-    <div class="notiz">
-        <h2>Notiz 5</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz5">
-            <textarea name="notiz" id="notiztext5" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-    <div class="notiz">
-        <h2>Notiz 6</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz6">
-            <textarea name="notiz" id="notiztext6" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-    <div class="notiz">
-        <h2>Notiz 7</h2> <!-- Bearbeiten button Hinzufügen -->
-        <form action="" method="POST" id="notiz7">
-            <textarea name="notiz" id="notiztext7" cols="30" rows="10"></textarea>
-            <button type="submit">Änderungen Speichern</button>
-        </form>
-    </div>
-</div>
+    <nav>
+        <a class="homebutton" href="../index.html">🏠</a>
+        <a href="notizen.php">Notizen</a>
+        <a href="../todo/todo.php">To-Do</a>
+        <a href="../event/event.php">Timer</a>
+        <a href="../user/login.php">Login</a>
+    </nav>
 
-
+    <button onclick="document.getElementById('notizForm').style.display='block';">Notiz Erstellen</button>
+    <div id="notizForm" style="display:none;">
+        <form action="" method="post">
+            <input type="text" name="notiz_name" placeholder="Notiz Titel">
+            <br>
+            <textarea name="notiz_inhalt" placeholder="Notiz Inhalt"></textarea>
+            <br>
+            <button type="submit" name="neue_notiz">Speichern</button>
+        </form>
+    </div>
 </body>
 </html>

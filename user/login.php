@@ -35,9 +35,9 @@ try {
 } catch (PDOException $e) {
     die("Datenbankverbindung fehlgeschlagen: " . $e->getMessage());
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST')  { 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
     $user = trim($_POST['username']);
-    $pass = password_hash(trim($_POST['passwort']), PASSWORD_BCRYPT);
+    $pass = trim($_POST['passwort']); // Klartext-Passwort
 
     $statement = $db->prepare("SELECT * FROM account WHERE username = :username"); // Wert aus der Tabelle account holen
     $statement->bindParam(':username', $user);
@@ -45,16 +45,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
 
     $result = $statement->fetch(PDO::FETCH_ASSOC); // Tabelle als Array ausgeben
     if ($result) {
-        $datapass = $result['password']; 
-        if (password_verify($pass, $datapass)) {
-            $_SESSION['sesuser'] = $result['username']; // Session werte vergeben
-            $_SESSION['sesid'] = $result['userid']; // Session werte vergeben
-            header('Location: ../index.html'); // Weiterleitung zur Startseite (hoffentlich auch mit Session werten)
+        $datapass = $result['password'];
+        if (password_verify($pass, $datapass)) { // Vergleiche Klartext-Passwort mit Hash
+            $_SESSION['sesuser'] = $result['username'];
+            $_SESSION['sesid'] = $result['userid'];
+            header('Location: ../index.html');
+            exit;
+        } else {
+            session_abort();
+            echo "Falsches Passwort!";
         }
-        else {
-            session_abort(); // Session abbrechen wenn Passwort falsch
-            echo"Irgendwas ist Falsch"; // Am besten eine richtige Fehlermeldung anzeigen lassen als Pop up
-        }
+    } else {
+        echo "Benutzer existiert nicht!";
     }
 }
 ?>
