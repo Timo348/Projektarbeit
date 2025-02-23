@@ -60,6 +60,11 @@ try {
     die("Fehler beim Abrufen der Notizen: " . $e->getMessage());
 }
 
+// Abschnitt 4: Notiz Löschen
+// Abschnitt 5: Notiz Bearbeiten
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -95,9 +100,9 @@ try {
         echo "<p>" . $notiz['notiz_inhalt'] . "</p>";
         echo "<p>Erstellt: " . $notiz['notiz_erstellt'] . "</p>";
         echo "<p>Bearbeitet: " . $notiz['notiz_bearbeitet'] . "</p>";
-        // Noch machen Bearbeiten und Löschen Programmieren
-        echo "<button>Notiz bearbeiten</button>";
-        echo "<button>Notiz löschen</button>";
+        // Noch machen Löschen und Bearbeiten
+        echo "<button> Bearbeiten </button>";
+        echo "<button> Löschen </button>";
         echo "<hr>";
     }
     ?>
