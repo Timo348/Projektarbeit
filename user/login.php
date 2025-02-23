@@ -28,6 +28,7 @@
 
 <?php
 session_start();
+
 ini_set('display_errors', '1'); 
 try {
     $db = new PDO('sqlite:' . __DIR__ . '/../database/projektdatenbank.db');

@@ -87,5 +87,19 @@ try {
             <button type="submit" name="neue_notiz">Speichern</button>
         </form>
     </div>
+
+    <?php
+  
+    foreach ($notizen as $notiz) {
+        echo "<h2>" . $notiz['notiz_name'] . "</h2>";
+        echo "<p>" . $notiz['notiz_inhalt'] . "</p>";
+        echo "<p>Erstellt: " . $notiz['notiz_erstellt'] . "</p>";
+        echo "<p>Bearbeitet: " . $notiz['notiz_bearbeitet'] . "</p>";
+        // Noch machen Bearbeiten und Löschen Programmieren
+        echo "<button>Notiz bearbeiten</button>";
+        echo "<button>Notiz löschen</button>";
+        echo "<hr>";
+    }
+    ?>
 </body>
 </html>
