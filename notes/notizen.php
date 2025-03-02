@@ -28,9 +28,7 @@ function NotizSpeichern(PDO $db) {
         $status = 1;
 
         try {
-            $statement = $db->prepare("INSERT INTO notizen 
-                (userid, notiz_name, notiz_inhalt, notiz_erstellt, notiz_bearbeitet, notiz_status)
-                VALUES (:userid, :name, :inhalt, :erstellt, :bearbeitet, :status)");
+            $statement = $db->prepare("INSERT INTO notizen (userid, notiz_name, notiz_inhalt, notiz_erstellt, notiz_bearbeitet, notiz_status)VALUES (:userid, :name, :inhalt, :erstellt, :bearbeitet, :status)");
             $statement->bindParam(':userid', $userid);
             $statement->bindParam(':name', $notenName);
             $statement->bindParam(':inhalt', $notenInhalt);

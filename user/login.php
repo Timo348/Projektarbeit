@@ -60,6 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Benutzer existiert nicht!";
     }
 }
+
+
 ?>
 
 </body>
