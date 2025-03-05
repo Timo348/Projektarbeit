@@ -1,0 +1,241 @@
+Projektarbeit 2BKI21
+
+
+// Bild oder Ähnliches
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Inhaltsverzeichnis
+Login/Register Design	3
+Register Css	4
+ Navigationsleiste	4
+Navigationsleiste: Elemente Positionieren	5
+Navigationsleiste: Homebutton	5
+Navigationsleiste: Hover	6
+Datenbank aufsetzen	7
+Datenbank werte einfügen	8
+Register Datenbank werte Eintragen	8
+Try-Block	9
+Catch-Block	9
+Login Funktionalität	10
+Notizen Funktionalität	11
+Notizen Funktionalität: Datenbank Attribute erklärt	11
+Notizen Funktionalität: Datenbankverbindung + Session	11
+Notizen Funktionalität: Notiz Erstellung	12
+Notizen Funktionalität: Notizen Abrufen	13
+Notizen html	13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Login/Register Design
+Zuerst mussten wir eine Form(html tag) erstellen für die Eingabe Felder Benutzername und Passwort, hierbei gab es keinerlei Probleme da wir dies bereits im Unterricht gründlich gemacht haben.
+Zudem haben wir noch einen a Tag am Ende der Login gemacht sodass man auch zu der Registrierung gelangt falls man noch keinen Account besitzt.
+Dadurch da das ganze noch nicht sehr Anschaulich aussieht haben wir eine .css Datei erstellt.
+Doch bevor wir in dieser Irgendetwas reinschreiben haben wir uns erstmals sehr grob gezeichnet wie die Seite aussehen soll:
+Danach ging es zur .css, Wir haben damit angefangen eine neue Class zu erstellen die wir maincontainer genannt haben, dem Container die Größe 500x720 gegeben haben.
+Wir haben in dieser .css Datei noch die font-family und die font-size für alle Elemente bestimmt.
+Jedoch nachdem wir der Form die Class maincontainer gegeben habe war es noch nicht mittig weshalb wir verschiedenste Sachen probiert haben wie z.B. auf der Linken Seite eine Margin geben aber dadurch da wir es nie richtig mittig hinbekommen haben haben wir Recherchiert und herausgefunden das wenn man bei margin-left: auto; und margin-right: auto; es automatisch in die Mitte verschoben wird. 
+Jetzt fügen wir noch die Navigationsleiste hinzu indem wir das styleesheet noch verlinken und die Navigationsleiste kopieren und die links ändern da wir uns an einem anderen Ort befinden.
+Dadurch da wir bereits in den Placeholdern stehen haben wo man seinen Benutzernamen und Passwort eingeben muss haben wir uns überlegt die Labels zu löschen damit es übersichtlicher aussieht. Danach haben wir noch die Abstände etwas umgeändert damit es nicht so geklemmt aussieht. 
+Register Css
+Dadurch da jetzt die Login Seite fertig ist haben wir mit der Register Seite angefangen, wir haben zuerst die Navigationsleiste eingefügt und das stylesheet von der nav verknüpft mit dem <link> tag, wir haben alle classes von der Login Seite übernommen und der Klasse Maincontainer zu der <form> hinzugefügt wie wir es beim Login gemacht hatten, Zudem haben wir Placeholder wieder geschrieben und die Labels entfernt da wir diese nicht brauchen.
+Es kam danach zum ersten Fehler, dadurch da das PHP Skript nicht teil der <form> ist schreibt es die Ausgaben außerhalb des angelegten Kasten (class maincontainer), um dieses Problem zu lösen haben wir eine <div> erstellt die auch das php Skript mit einbehält, dieser <div> haben wir Maincontainer zugewiesen und haben aus der form die form entfernt. Nun funktionierte alles einwandfrei.
+
+
+                                                                               Navigationsleiste
+
+Dadurch da wir auf jeder Unserer Seiten eine Navigationsleiste haben wollen um auf der Seite zu Navigieren erstellen wir uns auf (erstmals) einer Seite den tag <nav> in diesen a tag fügen wir nun für jeden Link zu einer anderen Seite den <a> tag. Anfangs hatten wir dies über den <ul> tag gemacht jedoch haben wir dann gesehen das html den <nav> tag bereits hat und haben dann lieber die vorgefertigte html Funktion genommen.
+
+
+
+
+Man kann nun auf alle verschiedenen Knöpfe drücken und man wird dann auch zu den richtigen Seiten weitergeleitet jedoch sieht es noch nicht sehr anschaulich aus, weshalb wir eine .css Datei erstellen um das Aussehen und optischem verhalten der Seite zu verändern.
+Zuerst haben wir die Hintergrund Farbe auf ein dunkles Lila geändert, dann noch die Breite auf 100% gestellt damit die Breite sich über die Ganze Seit erstreckt egal wie groß dein Gerät ist und dann noch die Höhe auf 100px.
+Damit hatten wir nun eine Fläche wo wir nun unsere <a> tags noch vergrößern können und am Besten als Knöpfe darstellen lassen.
+Dafür mussten wir in der .css Datei nun den tag nav a ändern zuerst haben wir wieder die Hintergrundfarbe geändert und zwei Größen angegeben, dann haben wir auch noch die Schriftgröße und Farbe geändert.
+Jedoch ergab sich dabei ein Problem, die Hintergrundfarbe wurde zwar geändert von den Elementen jedoch wurden sie nicht größer, dies Konnte jedoch relativ einfach gelöst werden mit der Hilfe von w3schools indem wir uns dort den Abschnitt CSS – Layout display: inline-block; angeschaut haben, dort steht beschrieben das im Gegensatz zu dem display: inline bei inline-block die Größe von Elementen geändert werden kann deshalb mussten wir um das Problem zu lösen nur den display auf inline-block ändern.
+Nun wollten wir auch noch den Text Zentrieren dafür haben wir dann einfach text-align: center; benutzt doch das macht den Text zwar Vertikal Mittig nur noch nicht Vertikal weswegen wir einen kleinen Trick benutzt haben das wenn man die line-height genauso groß einstellt wie die height des Elements das es dann sich Zentriert.
+Jetzt sieht die Navigationsleiste so aus.
+
+
+Navigationsleiste: Elemente Positionieren
+Dadurch da die Elemente alle noch nicht wirklich an guten Positionen stehen haben wir damit angefangen die Elemente Vertikal mittig zu Positionieren das haben wir gemacht indem wir einen Margin-top hinzugefügt haben, diesen Wert für das Margin-top war 10px da das <a> Element 80px groß war und die ganze Navigationsleiste 100px und wir unten oben den gleichen Abstand haben wollten. Für Den Abstand Rechts und Links gab es jedoch ein Problem da wir wollten das die 4 Elemente mittig stehen also mussten wir bei der nav das display auf flex stellen und justify-content auf center somit wurden dann die Elemente mittig angereiht. 
+Zuletzt mussten wir nun nur noch einen Margin links und Rechts einstellen damit die Elemente nicht press aneinander stehen.
+
+Navigationsleiste: Homebutton
+Nachdem wir bereits angefangen hatten die Funktionen vom Login und Register zu Programmieren ist uns aufgefallen das wir keinen Weg haben um zurück zur Hauptseite/Homepage zu kommen weshalb wir in die Navigationsleiste einen Button hinzufügen wollten.
+Zuerst haben wir einen neuen <a> tag erstellt wo wir dann einen Emoji eingefügt haben von einem Haus um anzudeuten das es ein Homebutton ist diesen haben wir eine class gegeben die wir in der nav.css .homebutton genannt hatten, wir haben die Größe auf 60x60 Pixel eingestellt damit er kleiner ist als die anderen Pixel, der Rest war gleich außer das wir Anpassungen machen mussten damit er wieder mittig ist indem wir den Margin-top erhöht haben, zudem haben wir einen Größeren border-radius eingestellt.
+Jetzt gab es nur noch ein Problem die Position des Buttons war noch zu sehr bei den Anderen Buttons was wir nicht wollten, wir hatten probiert einen margin-right zu machen was jedoch auch die anderen Buttons verschob, daher das wir keine Lösung für das Problem gefunden hatten hatten wir dann im Internet nach einer Lösung gesucht, auf w3schools.com/css/css_positioning.asp und developer.mozilla.org/en-US/docs/Web/CSS/position wurden wir dann fündig, denn indem wir die Position des Buttons auf absolute stellen war dieser unabhängig von den Anderen Buttons.
+Nachdem dieser unabhängig war mussten wir noch einen margin-right einstellen sodass dieser nicht in der Mitte vom Bildschirm ist.
+Nun Funktionierte der Homebutton und war an der Richtigen Position.
+Navigationsleiste: Hover
+
+Nun sieht die Startseite des Projektes so aus zu Letzt wollen wir noch hinzufügen das wenn man mit der Maus über einem Element ist das es die Farbe ändert dies kann erfolgen indem man bei der .css Datei diesen Schritt macht:
+
+
+
+
+Jetzt wird die Farbe geändert wenn man über das Element „hovert“.
+Damit wäre die Navigationsleiste vorerst fertig und braucht erst später eine Änderung um anzuzeigen auf was für einem Element man sich befindet.
+
+Datenbank aufsetzen
+Zuerst haben wir uns in Onenote einen Datenbank Prototypen gezeichnet wo wir alle unsere Tabelle einzeichnen für alle unsere Seiten und Funktionen am Ende sah diese dann wie folgt aus:
+
+
+
+
+
+
+
+
+Wir haben uns den db Browser Installiert um die Datenbank aufzusetzen wie wir sie bereits in Onenote haben.
+
+Das war nun unsere erste Tabelle die wir für uns kreieren diese wird für die Benutzerverwaltung benutzt. 
+Wir haben bei username und password jeweils den Datentyp TEXT genommen damit wir es als String später im Code haben zudem haben wir bei allen NOT NULL aktiviert das bewirkt dann das es nicht Leer sein kann.
+Bei der userid haben wir zudem den Datentyp Integer angegeben sodass die ID eine Zahl ist wie z.B. 63, wir haben auch Autoincrement eingestellt damit diese Automatisch vergeben wird, unique das jede nur einmal vergeben werden kann und Primary key damit wir es eindeutig zuteilen können.
+Diesen Schritt haben wir nun Jeweils für alle unsere Tabellen gemacht nur das die userid kein Autoincrement, Primary key, unique da wir es bereits getan hatten bei der Account erstellen und da die userid bereits erstellt ist.
+
+
+
+
+
+Datenbank werte einfügen
+Jetzt haben wir unsere Datenbank vollständig aufgesetzt, jetzt wollen wir zum Testen in die Tabelle Accounts einen Testnutzer erstellen dazu mussten wir ein SQL Skript ausführen
+zuerst mussten wir dafür INSERT INTO account einfügen damit es in die Tabelle account hineinschreibt.
+In der Zweiten Zeile dann die werte die hinein gefügt werden die also für den Namen das Passwort und die ID.
+Dies funktionierte wie man auf dem Abbild sieht,
+Nun müssen wir dies noch mit einem php Skript verwirklichen.
+
+Register Datenbank werte Eintragen
+
+Im PHP-Skript haben wir als erstes versucht eine Verbindung mit der Datenbank aufzubauen. Dafür haben wir zuerst mit „new PDO“ eine Verbindung mit unserer PHP-Datei und einem Datenbankserver aufgebaut. Danach haben wir einen „setAttribute“ gemacht. Dies ist eine wichtige Einstellung, die bestimmt, wie PDO (PHP Data Objects) Fehler im Zusammenhang mit der Datenbankverbindung und SQL-Abfragen behandeln.  Danach kam der Kompliziertere Teil, nämlich die Variablen in einer try- catch-Exception verwenden. Aber als erstes haben wir die ID’s aus der HTML Zeile mit „trim($_REQUEST[ ])“ die Variablen deklariert. „trim“ ist dafür da um sogenannte „Whitespaces“ am Anfang oder am Ende eines Strings zu entfernen. Nach langer recherche hab wir herausgefunden, dass wir in unserem PHP-Code die „try-“ und „catch-Exception“ bräuchten. Exceptions können in PHP „geworfen“ werden (throw) und „gefangen“ werden (catch). Um Sachen abzufangen sollte der Code von einem „try-Block“ umschlossen werden. Jeder „try-Block“ muss einen zugehörigen „catch-“ oder „finally-Block“ besitzen. Wir haben es beispielsweise mit einem „try-Block“ und „catch-Block“ gemacht. „catch-Block“ definiert, wie auf eine ausgelöste Exception reagiert werden soll. Wenn eine Exception ausgelöst wird und der aktuelle Funktionsbereich keinen „catch-Block“ hat, steigt die Exception im Aufrufstapel bis zur aufrufenden Funktion auf, bis sie einen passenden „catch-Block“ findet.
+Try-Block
+
+Im „try-Block“ möchten wir, dass Benutzer in der Datenbank hinzugefügt werden. Weswegen wir erstens die Variable „$statement“ mit „prepare“ deklariert haben. „prepare“ bereitet eine Anweisung zur Ausführung vor und liefert ein Anweisungsobjekt. Im „prepare“ haben wir „INSERT INTO account“ gemacht, das heißt so zu sagen, dass wenn man Benutzername und Passwort eingibt, dass diese Daten in der Datenbank hinzugefügt werden und zwar in den Spalten „username“ und „password“. Danach haben wir „bindParam“ für „username“ und „password“ benutzt. „bindParam“ bindet einen Parameter an den angegebenen Variablennamen. In dem Falle wird an „$statement“ die Parameter „:username“ und „:password“ gebunden. Am Ende des „try-Blocks“ wird ein „execute“ hinzugefügt. „execute“ führt ein „prepare“ Statement aus. Heißt der „prepare“ Statement welches wir vorher gemacht haben wird am Ende mit „execute“ ausgeführt. Danach haben wir einen „echo“ gemacht um anzuzeigen, dass die Registrierung erfolgreich war. Nach dem ganzen „try-Block“ kommt der „catch-Block“.
+Catch-Block
+
+Im „catch-Block“ möchten wir, dass man Fehler behandeln kann beispielsweise wenn der Benutzername schon existiert.  Wir haben im „catch-Block“ eine sogenannte PDOException hinzugefügt. Eine „PDOException“ stellt einen Fehler dar, der von PDO ausgelöst wird. Wir haben im „catch-Block“ eine if-Schleife gemacht. Eine if-Schleife ist einer der wichtigsten Feature vieler Programmiersprachen. Warum es einer der wichtigsten Feature in vielen Programmiersprachen ist liegt daran, dass es ermöglicht bedingte Ausführungen von bestimmten Codefragmenten. In der Klammer der if-Schleife haben wir die Exception „getCode“ hinzugefügt. Die Exception „getCode“ gibt die Fehlernummer der Exception zurück. Wir haben jetzt beispielsweise die Fehlernummer „23000“ dafür benutzt um anzuzeigen, dass es diesen bestimmten Benutzernamen schon bereits registriert ist. Danach haben wir ein „else“ im Code geschrieben um anzuzeigen, dass wenn nichts passt, dass es dann die Nachricht „Ein Fehler ist aufgetreten :/“ ausgibt. Und ganz am Ende des „catch-Blocks“ haben wir ein „getMessage“ drangehängt. „getMessage“ gibt die Exception Beschreibung zurück. Als wir dann den Code gehabt haben und es ausprobiert haben, hatten wir diese Fehlanzeige:“Fatal error: Uncaught PDOException: could not find driver in C:\xampp\htdocs\Projektarbeit\user\register.php:22 Stack trace: #0 C:\xampp\htdocs\Projektarbeit\user\register.php(22): PDO->__construct('C:\\xampp\\htdocs...') #1 {main} thrown in C:\xampp\htdocs\Projektarbeit\user\register.php on line 22 “ . Wir haben ChatGPT als Hilfe benutzt. Wir haben ChatGPT unseren ganzen Code geschickt mit der Frage wo unser Fehler lag und tatsächlich war unser Fehler, dass der Verbindungsstring für SQLite fehlerhaft war und wir die falsche Datei im Verbindungsstring angegeben haben. Was wir also verändert haben waren einmal „$db = new  *enter* PDO('C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.sqbpro');“ zu  „$db = new *ohne enter* PDO('C:\xampp\htdocs\Projektarbeit\database\projektdatenbank.sqbpro');“ und dann auch „projektdatenbank.sqbpro“ zu „projektdatenbank.db“ verändert.
+Login Funktionalität
+Dadurch da wir jetzt einen Funktionierenden Register haben wollen wir natürlich noch einen Login machen, die ersten Zwei Zeilen aus dem Code können wir übernehmen wie sie bereits sind, somit haben wir nun wieder eine Verbindung zur Datenbank, die variablen bekommen wir auch genau gleich wie beim Register mit $_POST.
+Nun machen wir wieder ein $statement wie beim Register nur diesmal machen wir kein INSERT sonder ein SELECT da wir nichts in die Datenbank einfügen möchten sondern wir möchten werte aus der Datenbank bekommen, genauer genommen wollen wir alle Werte (*) von der Tabelle account nehmen wo der eingegebene username mit dem username übereinstimmt der in der Datenbank steht damit wir das eingegebene Passwort mit dem Datenbank Password übereinstimmt, am ende sollte das $statement dann so aussehen:
+Die SELECT haben wir über diese Seite herausgefunden https://www.tutorialspoint.com/sqlite/sqlite_select_query.htm
+Bevor den $statement ausführen müssen wir noch den Parameter binden damit es auch weiß woher der username überhaupt genommen wird, nun erstellen wir eine Neue Variabel, 
+in dieser Variabel machen wir nun noch ein statement mit einem fetch, der fetch gibt uns dann die Tabellen reihe als array aus, damit wir dieses array dann auch benutzen können können wir zum beispiel eine neue variabel erstellen die wir nun $datapass nennen und ihr den wert von der fetch das password ausgeben so ('password') und keine Doppelten da es ein Array ist und kein String!
+Nun da wir das Passwort als Variabel haben können wir nun eine If Verzweigung erstellen die überprüft ob das eingegebene Passwort mit dem Passwort  aus der  Datenbank übereinstimmt.
+Wenn dieses Passwort dann stimmt wollen wir noch der Session die werte für den Benutzernamen und der userid zuweisen damit wir diesen dann auf Seiten wie dem Notizen speicher benutzen können damit er auf dem Benutzer gespeichert wird.
+Wenn aber das Passwort falsch ist soll die Session abgebrochen werden.
+Um zur Startseite wieder zurückgeleitet zu werden einfach die PH-Funktion header benutzen.
+
+Notizen Funktionalität
+Notizen Funktionalität: Datenbank Attribute erklärt
+Für Unseren Notizen speicher haben wir bereits die Datenbank Tabelle erstellt die haben wir notizen genannt, in Dieser Datenbank Tabelle gibt es mehrere Attribute:
+    • userid: Das ist die gleiche wie bei dem Login und Register wir benutzen sie dafür um herauszufinden für wen die Tabelle ist also wer sie einsehen kann.
+    • notizid: notizid ist ähnlich wie die userid nur das diese nur für die Notizen sind damit man diese eindeutig unterscheiden kann, weil wenn man dafür zum Beispiel den Notiz Namen nähmen würde könnte es zu Problemen führen da man einer Notiz ja den gleichen Namen geben könnte. Die notizid wird automatisch vergeben sobald eine Notiz dann erstellt wird.
+    • notiz_inhalt: Dieser Attribut bestimmt darüber was in der Notiz steht z.B. 2 Liter Milch Kaufen und 3 Eier.
+    • notiz_erstellt: Dieser Attribut ist dafür da um einzusehen wann die Notiz Erstellt wurde, das wollen wir dann auch anzeigen damit der Benutzer genau einsehen kann von wann die Notiz ist.
+    • notiz_bearbeitet: Dieser Attribut ist ähnlich wie notiz_erstellt nur das dieser dafür da ist um sehen wann die Notiz zuletzt bearbeitet wurde, dies wollen wir dem Benutzer nicht anzeigen aber wir wollen das die Notiz die zuletzt bearbeitet wurde als erstes angezeigt wird.
+    • notiz_status: Wir wollen den Attribut notiz_status benutzen um anzuzeigen ob die Notiz Gelöscht ist oder nicht da wir uns Überlegt hatten das man die Notizen wiederherstellen kann deswegen ist wenn dieser Attribut auf 1 steht die Notiz Aktiv und wenn der Wert auf Null ist soll er für den Benutzer nur über die Wiederherstellungsfunktion dann einzusehen sein.
+Notizen Funktionalität: Datenbankverbindung + Session
+Da wir jetzt genau wissen für was wir all unsere Datenbank Attribute verwenden wollen können wir uns an den Hauptcode des Hodensacks machen.
+Zuerst beginnen wir wieder damit php zu Initialisieren.
+Jetzt wollen wir wieder eine Datenbankverbindung haben, das machen wir genau gleich wie bei
+den anderen Seiten mit dem try catch block, also haben wir einfach den Code vom Login 1zu1 rüber Kopiert.
+Jetzt da wir eine Datenbankverbindung haben wollen wir wieder die Funktion session_start machen und dann überprüfen ob der Nutzer eingeloggt ist, dies wollten wir dann wieder mit der Variabel sesid machen die wir im Login vergeben da wenn der Benutzer nicht die Variabel sesid hat dann wissen wir das er nicht eingeloggt ist.
+Wir hatten zuerst Probiert zu überprüfen ob die sesid einen Wert in einem Bestimmten Zahlenbereich hat z.B. so: 
+if ($_SESSION[‘sesid’] ==< 0)
+aber dann dachten wir uns das es dort einen besseren Weg für geben muss. Und sind dann auf die Funktion isset gestoßen (https://www.php.net/manual/de/function.isset.php)
+Also dachten wir uns das wenn sesid isset ist das dann der Code dann normal ausgeführt wird und man sonst auf die Login Seite geführt wird.
+Aber jetzt dachten wir uns das es vielleicht geschickter wäre zu überprüfen ob die Variabel nicht nicht Null ist also haben wir  vor dem isset noch ein ! Gemacht das es es negiert.
+Jetzt Wollten wir das wenn die Bedingung Erfüllt ist noch machen das man zur Login Seite zurückgeführt wird, dies haben wir dann mit der Funktion header(https://www.php.net/manual/en/function.header.php) gemacht.
+
+Notizen Funktionalität: Notiz Erstellung
+Jetzt wollen wir eine Funktion Erstellen womit wir eine Notiz Erstellen können das machen wir natürlich mit function und schreiben dort in die Klammer noch die Variabel $db damit die Funktion  auch mit der Datenbank dann Kommunizieren kann. 
+Zuerst wird mit einer if-Abfrage überprüft, ob überhaupt ein Formular abgeschickt wurde, REQUEST_METHOD und wir wollen noch einen Knopf machen in html wo man dann dafür draufdrücken kann um die Notiz zu Erstellen deswegen haben wir dort noch als bedingung reingemacht das neue_notiz gesetzt ist. Die if-Abfrage sieht jetzt so aus:
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['neue_notiz'])) { }.
+
+Jetzt wollen wir die Werte(Attribute der Datenbank Tabelle) Deklarieren die wir in die Datenbank einfügen wollen.
+    • userid: Die userid bekommen wir wieder durch die Session indem wir aus der $_SESSION Variabel uns den Wert sesid geben da diese mit der userid identisch ist.
+    • Zeit: Die Zeit für Das Erstellungs-Datum und wann es zuletzt bearbeitet wurde bekommen wir mit der date(https://www.w3schools.com/php/func_date_date.asp , https://www.php.net/manual/de/function.date.php)Funktion, Wir haben es im Format Y-m-d H:i:s formatiert: Y=Jahr, m=Monat, d=Tag, H=Stunde (24Stunden Metrik), i=Minute, s=Sekunde.
+    • Name & Inhalt: Den Namen und Inhalt werden wir dann wieder aus einem html Format entnehmen, wir haben die Werte erstmals notiz_name und notiz_inhalt genannt.
+    • Status: Wir wollten ja das der Status entweder 0 oder 1 ist um zu Deklarieren ob die Notiz angezeigt wird also haben wir einfach eine Variabel namens Status erstellt und setzen diese auf 1.
+      
+Jetzt wollen wir die Werte auch in die Datenbank eintragen, dies wollen wir wieder genau so machen wie beim Register mit prepare in einem try catch.
+In die query setzen wir nun einen INSERT INTO notizen und als werte haben wir dann die Attribute der Tabelle (userid, notiz_name etc.).
+Die Parameter die wir in die Tabelle einsetzen setzen wir nun auf unsere zuvor erstellten Variablen.
+Falls dabei ein Fehler auftritt geben wir eine Fehlernachricht aus.
+
+Notizen Funktionalität: Notizen Abrufen
+Jetzt können wir Notizen Speichern, aber wir können sie uns noch nicht Anschauen, wir wollten dies Anfangs auch in einer Funktion machen aber dachten uns dann das dies so oder so Sichtbar ist und wir uns deshalb die Paar Zeilen Code Sparen können.
+Wir haben uns also Zuerst die userid geholt von der Session weil wir nur die Notizen von einem Jeweiligen Nutzer haben möchten.
+Dann haben wir es so wie beim Login(/Register) gemacht und haben einen try catch Block gemacht  wo ein prepare drinnen steht, in der query steht aber diesmal SELECT weil wir uns schließlich werte Ausgeben möchte und nicht einfügen möchten, Bei dem Select nehmen wir dann die Tabelle notizen natürlich, wir wollen dann mit dem WHERE Keyword überprüfen ob die userid und der Status 1 ist damit nur die Richtigen Notizen angezeigt werden.
+Jetzt kommt noch hinzu das wir das Keyword ORDER BY (https://www.w3schools.com/sql/sql_orderby.asp) benutzen und dann nach notiz_bearbeitet (descending) sortieren damit die Neuesten oben sind.
+Es gibt auch hier wieder ein catch mit einer Fehleranzeige falls etwas falsch läuft.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Notizen html
+Jetzt ist der fast Gesamte PHP Quellcode Fertig, jetzt müssen wir nur so ziemlich nur noch das html & css machen.
+Wir haben damit angefangen wieder die Navigationsleiste zu übernehmen.
+Wir haben erstmals einen Button erstellt der dann dafür dienen soll das Feld zu öffnen wo man dann Eine Neue Notiz mit erstellen kann.
+Wir hatten uns überlegt wie wir es machen können das man das Feld nur sieht wenn man den Knopf drückt.
+Wir haben dann eine Lösung mit einer Zeile Javascript gefunden, weil wenn man eine div erstellt und dieser div den style display None gibt und ihn dann mit Javascript verändert (z.B. display block)
+das man das Feld dann nur sieht wenn man den Knopf gedrückt sieht.
+(https://www.w3schools.com/jsref/met_document_getelementbyid.asp)
+Wir haben nun auch getestet einen Wert einzutragen, dies hat auch funktioniert im DB Browser wurde uns alles angezeigt:
+Jetzt müssen wir noch einstellen das uns die Notizen angezeigt werden.
+Wir haben die Notizen bereits im php Code in einer Variabel gespeichert, also haben wir erstmals wieder PHP gestartet und die Variabel ausgegeben, das hat uns nur Komische Sachen ausgegeben da es als Array abgespeichert ist also haben wir uns überlegt es mit einer foreach schleife auszugeben, das hat nicht funktioniert und hat uns einfach nur nach langem laden angezeigt das die Datenbank gesperrt ist.
+Aber dieser Fehler lag nicht an dem Code sondern als wir den Fehlercode gegoogelt haben lag es daran das wir noch DB Browser offen hatten.
+Jetzt wurde uns alles richtig angezeigt (ohne Design außer nav)(und ohne Löschknopf der kommt noch).
