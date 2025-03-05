@@ -19,7 +19,7 @@ if (!isset($_SESSION['sesid'])) {
 // Datenbankobjekte: Tabelle todo (userid, todoid, todo_titel, todo_inhalt, todo_erstellt, todo_status)
 // Abschnitt 2: Funktion To-Do Speichern
 
-// Status 1 = Neu/Zu machen , 2 = In Bearbeitung, 3 = Erledigt 4 = Gelöscht
+// Status 1 = To-Do, 2 = In Bearbeitung, 3 = Erledigt 4 = Gelöscht
 function todoSpeichern(PDO $db) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['neue_todo'])) {
         $userid = $_SESSION['sesid'];
@@ -165,7 +165,7 @@ function todoPermanentLoeschen(PDO $db) {
     <div class="todo-container">
         <!-- Spalte 1: Neu/Zu machen -->
         <div class="todo-column">
-            <div class="column-header">Zu erledigen</div>
+            <div class="column-header">To-Do</div>
             <?php
             // Todos mit Status 1 abrufen
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 1 ORDER BY todo_erstellt DESC");
