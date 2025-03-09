@@ -113,17 +113,10 @@ function todoPermanentLoeschen(PDO $db) {
         $todoid = $_POST['todoid'];
 
         try {
-            // Option 1: Set status to 5 (permanent deleted)
             $statement = $db->prepare("UPDATE todo SET todo_status = 5 WHERE userid = :userid AND todoid = :todoid");
             $statement->bindParam(':userid', $userid);
             $statement->bindParam(':todoid', $todoid);
             $statement->execute();
-            
-            // Option 2 (alternative): Completely delete from database
-            // $statement = $db->prepare("DELETE FROM todo WHERE userid = :userid AND todoid = :todoid");
-            // $statement->bindParam(':userid', $userid);
-            // $statement->bindParam(':todoid', $todoid);
-            // $statement->execute();
         } catch (PDOException $e) {
             die("To-Do konnte nicht permanent gelöscht werden: " . $e->getMessage());
         }
@@ -140,7 +133,6 @@ function todoPermanentLoeschen(PDO $db) {
     <title>To-Do</title>
     <link rel="stylesheet" href="../nav.css">
     <link rel="stylesheet" href="todo.css">
-    <script src="todo.js"></script>
 </head>
 <body>
     <nav>
