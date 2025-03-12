@@ -55,7 +55,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 ## User Sharing
 - Plannung
     - [x] Timo
-### Programmierung
+- Programmierung:
 - Share Button auf To-Do.php 
     - []
 - Share Button auf Notizen.php
