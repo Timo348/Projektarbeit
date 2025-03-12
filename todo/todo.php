@@ -137,7 +137,7 @@ function todoPermanentLoeschen(PDO $db) {
 <body>
     <nav>
         <a class="homebutton" href="../index.html">🏠</a>
-        <a href="notizen.php">Notizen</a>
+        <a href="../notes/notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
         <a href="../event/event.php">Timer</a>
         <a href="../user/login.php">Login</a>
@@ -166,8 +166,8 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Erstellt: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
                 echo '<form method="POST" style="display: inline;">';
@@ -197,8 +197,8 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Bearbeitet: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
                 echo '<form method="POST" style="display: inline;">';
@@ -228,8 +228,8 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Erledigt: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
                 echo '<form method="POST" style="display: inline;">';
@@ -258,17 +258,20 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Gelöscht: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
-                // Existing "Wiederherstellen" button
+
+                // Knopf Für Wiederherstelen
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<input type="hidden" name="status" value="1">';
                 echo '<button type="submit" name="todo_status" class="edit-btn">Wiederherstellen</button>';
                 echo '</form>';
-                // New "Endgültig löschen" button
+
+
+                // Knopf Löschen
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<button type="submit" name="todo_permanent_loeschen" class="delete-btn">Endgültig löschen</button>';

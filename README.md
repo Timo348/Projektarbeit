@@ -52,6 +52,24 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - Css
     - []
 
+## User Sharing
+- Plannung
+    - [x] Timo
+### Programmierung
+- Share Button auf To-Do.php 
+    - []
+- Share Button auf Notizen.php
+    - []
+
+## Homepage
+- Plannung
+    - [x] Timo
+- Programmierung
+    - [0] Timo (noch zu machen aber ist einfach)
+- Css
+    - [x] Timo
+
+
 # Doku
 - Vorwort & Inhaltsangabe & Deckblatt
     - [x] Timo (noch nicht ganz fertig)

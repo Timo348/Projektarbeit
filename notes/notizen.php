@@ -58,10 +58,6 @@ try {
     die("Fehler beim Abrufen der Notizen: " . $e->getMessage());
 }
 
-// Abschnitt 4: Notiz Löschen
-// Abschnitt 5: Notiz Bearbeiten
-
-
 
 ?>
 <!DOCTYPE html>
