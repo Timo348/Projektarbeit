@@ -65,9 +65,9 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - Plannung
     - [x] Timo
 - Programmierung
-    - [0] Timo (noch zu machen aber ist einfach)
+    - [] Timo (noch zu machen aber ist einfach)
 - Css
-    - [x] Timo
+    - [] Timo (noch zu machen)
 
 
 # Doku
