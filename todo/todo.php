@@ -143,7 +143,6 @@ function todoPermanentLoeschen(PDO $db) {
         <a href="../user/login.php">Login</a>
     </nav>
 
-    <!-- Form to add new todos -->
     <div class="todo-form">
         <form method="POST" action="">
             <h2>Neues To-Do erstellen</h2>
@@ -153,13 +152,14 @@ function todoPermanentLoeschen(PDO $db) {
         </form>
     </div>
     
-    <!-- 4 Spalten für die Jeweiligen To-Do mit jeweils Titel, Inhalt, Zeit Ganz Unten angezeigt, Bearbeitungsknopf und Lösch knopf, Todos Sollen verschoben werden können -->
-    <div class="todo-container">
-        <!-- Spalte 1: Neu/Zu machen -->
-        <div class="todo-column">
-            <div class="column-header">To-Do</div>
+   
+    <div class="todo-container">  <!-- To-Do Listen Anzeigungscontainer -->
+        
+        <div class="todo-zustand">
+            <div class="todo-ueberschrift">To-Do</div>
             <?php
-            // Todos mit Status 1 abrufen
+            
+            // Alle Todos die den Status 1 haben also ganz links sind anzeigen.
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 1 ORDER BY todo_erstellt DESC");
             $stmt->bindParam(':userid', $_SESSION['sesid']);
             $stmt->execute();
@@ -188,7 +188,7 @@ function todoPermanentLoeschen(PDO $db) {
         
         <!-- Spalte 2: In Bearbeitung -->
         <div class="todo-column">
-            <div class="column-header">In Bearbeitung</div>
+            <div class="todo-ueberschrift">In Bearbeitung</div>
             <?php
             // Todos mit Status 2 abrufen
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 2 ORDER BY todo_erstellt DESC");
@@ -219,7 +219,7 @@ function todoPermanentLoeschen(PDO $db) {
         
         <!-- Spalte 3: Erledigt -->
         <div class="todo-column">
-            <div class="column-header">Erledigt</div>
+            <div class="todo-ueberschrift">Erledigt</div>
             <?php
             // Todos mit Status 3 abrufen
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 3 ORDER BY todo_erstellt DESC");
@@ -249,7 +249,7 @@ function todoPermanentLoeschen(PDO $db) {
         
         <!-- Spalte 4: Gelöscht -->
         <div class="todo-column">
-            <div class="column-header">Papierkorb</div>
+            <div class="todo-ueberschrift">Papierkorb</div>
             <?php
             // Todos mit Status 4 abrufen (gelöscht)
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 4 ORDER BY todo_erstellt DESC LIMIT 10");
