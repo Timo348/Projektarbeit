@@ -66,6 +66,7 @@ try {
     <meta charset="UTF-8">
     <title>Meine Notizen</title>
     <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="notizen.css"> 
 </head>
 <body>
     <nav>
@@ -78,7 +79,7 @@ try {
 
     <button onclick="document.getElementById('notizForm').style.display='block';">Notiz Erstellen</button>
     <div id="notizForm" style="display:none;">
-        <form action="" method="post">
+        <form action="" method="post" name="notizen-form">
             <input type="text" name="notiz_name" placeholder="Notiz Titel">
             <br>
             <textarea name="notiz_inhalt" placeholder="Notiz Inhalt"></textarea>
