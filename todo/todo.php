@@ -42,6 +42,8 @@ function todoSpeichern(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht eingefügt werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
@@ -65,7 +67,10 @@ function todoBearbeiten(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht bearbeitet werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
+    
 }
 
 // Abschnitt 4: Funktion To-Do Löschung
@@ -83,6 +88,8 @@ function todoLoeschen(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht gelöscht werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
@@ -103,6 +110,8 @@ function todoStatus(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do Status konnte nicht geändert werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
@@ -120,9 +129,19 @@ function todoPermanentLoeschen(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht permanent gelöscht werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
+// Process POST requests BEFORE any output is sent
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    todoSpeichern($db);
+    todoBearbeiten($db);
+    todoLoeschen($db);
+    todoStatus($db);
+    todoPermanentLoeschen($db);
+}
 ?>
 
 <!DOCTYPE html>
@@ -282,15 +301,6 @@ function todoPermanentLoeschen(PDO $db) {
             ?>
         </div>
     </div>
-
-    <?php
-    // Funktionen aufrufen
-    todoSpeichern($db);
-    todoBearbeiten($db);
-    todoLoeschen($db);
-    todoStatus($db);
-    todoPermanentLoeschen($db);
-    ?>
 
 </body>
 </html>
