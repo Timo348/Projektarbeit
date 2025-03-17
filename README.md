@@ -41,8 +41,8 @@ Projektarbeit 2bki21 2024 Lukas und Timo
     - [x] Timo
 - css
     - [x] Timo
-- Fehlerbehebung das man nicht die Seite nachjedem Klick Aktualisieren muss
-    - [ ] 
+- Fehlerbehebung 
+    - [x] Timo
 
 ## Event Timer
 - Plannung
