@@ -139,7 +139,7 @@ function todoPermanentLoeschen(PDO $db) {
         <a class="homebutton" href="../index.html">🏠</a>
         <a href="../notes/notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
-        <a href="../event/event.php">Timer</a>
+        <a href="../event/event.php">Event</a>
         <a href="../user/login.php">Login</a> 
     </nav>
 

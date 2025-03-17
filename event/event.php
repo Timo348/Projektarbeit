@@ -1,5 +1,4 @@
 <?php
-
 // Abschnitt 1: Verbindung + Session
 
 try {
@@ -16,11 +15,15 @@ if (!isset($_SESSION['sesid'])) {
     exit;
 }
 
-// Funktion zum Erstellen eines neuen Ereignisses
-function createEvent($userid, $ecd_name, $ecd_datum, $ecd_inhalt) {
-    global $db;
+$userid = $_SESSION['sesid']; // Benutzer-ID aus der Session holen
+
+// Event hinzufügen
+if (isset($_POST['add'])) {
+    $ecd_name = $_POST['ecd_name'];
+    $ecd_datum = $_POST['ecd_datum'];
+    $ecd_inhalt = $_POST['ecd_inhalt'];
+
     try {
-        // Daten in die Tabelle 'ereignisscountdown' einfügen
         $sql = "INSERT INTO ereignisscountdown (userid, ecd_name, ecd_datum, ecd_inhalt) 
                 VALUES (:userid, :ecd_name, :ecd_datum, :ecd_inhalt)";
         $stmt = $db->prepare($sql);
@@ -29,52 +32,67 @@ function createEvent($userid, $ecd_name, $ecd_datum, $ecd_inhalt) {
         $stmt->bindParam(':ecd_datum', $ecd_datum);
         $stmt->bindParam(':ecd_inhalt', $ecd_inhalt);
         $stmt->execute();
-        echo "Ereignis erfolgreich erstellt!";
+
+        // Nach erfolgreichem Einfügen die Seite neuladen
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+
     } catch (PDOException $e) {
         echo "Fehler beim Erstellen des Ereignisses: " . $e->getMessage();
     }
 }
 
-// Funktion zum Bearbeiten eines Ereignisses
-function editEvent($ecdid, $ecd_name, $ecd_datum, $ecd_inhalt) {
-    global $db;
+// Event bearbeiten
+if (isset($_POST['edit'])) {
+    $ecdid = $_POST['ecdid'];
+    $ecd_name = $_POST['ecd_name'];
+    $ecd_datum = $_POST['ecd_datum'];
+    $ecd_inhalt = $_POST['ecd_inhalt'];
+
     try {
-        // Ereignis in der Tabelle 'ereignisscountdown' aktualisieren
         $sql = "UPDATE ereignisscountdown 
                 SET ecd_name = :ecd_name, ecd_datum = :ecd_datum, ecd_inhalt = :ecd_inhalt
-                WHERE ecdid = :ecdid";
+                WHERE ecdid = :ecdid AND userid = :userid";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':ecdid', $ecdid);
+        $stmt->bindParam(':userid', $userid);
         $stmt->bindParam(':ecd_name', $ecd_name);
         $stmt->bindParam(':ecd_datum', $ecd_datum);
         $stmt->bindParam(':ecd_inhalt', $ecd_inhalt);
         $stmt->execute();
-        echo "Ereignis erfolgreich bearbeitet!";
+
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+
     } catch (PDOException $e) {
         echo "Fehler beim Bearbeiten des Ereignisses: " . $e->getMessage();
     }
 }
 
-// Funktion zum Löschen eines Ereignisses
-function deleteEvent($ecdid) {
-    global $db;
+// Event löschen
+if (isset($_POST['delete'])) {
+    $ecdid = $_POST['ecdid'];
+
     try {
-        // Ereignis aus der Tabelle 'ereignisscountdown' löschen
-        $sql = "DELETE FROM ereignisscountdown WHERE ecdid = :ecdid";
+        $sql = "DELETE FROM ereignisscountdown WHERE ecdid = :ecdid AND userid = :userid";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':ecdid', $ecdid);
+        $stmt->bindParam(':userid', $userid);
         $stmt->execute();
-        echo "Ereignis erfolgreich gelöscht!";
+
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+
     } catch (PDOException $e) {
         echo "Fehler beim Löschen des Ereignisses: " . $e->getMessage();
     }
 }
 
-// Abfrage der Ereignisse aus der Datenbank
+// Ereignisse aus der Datenbank abrufen
 try {
     $sql = "SELECT * FROM ereignisscountdown WHERE userid = :userid";
     $stmt = $db->prepare($sql);
-    $stmt->bindParam(':userid', $_SESSION['sesid']); // Nimm die Benutzer-ID aus der Session
+    $stmt->bindParam(':userid', $userid);
     $stmt->execute();
     $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -96,11 +114,12 @@ try {
         <a class="homebutton" href="../index.html">🏠</a>
         <a href="../notes/notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
-        <a href="../event/event.php">Timer</a>
+        <a href="../event/event.php">Event</a>
         <a href="../user/login.php">Login</a>
     </nav>
+
     <form method="post" class="event-form">
-    <h2>Event hinzufügen</h2>
+        <h2>Event hinzufügen</h2>
         <input type="text" name="ecd_name" placeholder="Event Name" required>
         <input type="date" name="ecd_datum" required>
         <textarea name="ecd_inhalt" placeholder="Beschreibung"></textarea>
@@ -109,21 +128,27 @@ try {
     
     <h2>Events</h2>
     <ul>
-        <?php if (isset($events) && count($events) > 0): ?>
+        <?php if (!empty($events)): ?>
             <?php foreach ($events as $event): ?>
                 <li>
-                    <strong><?= htmlspecialchars($event['ecd_name']) ?></strong>
-                    <?= htmlspecialchars($event['ecd_datum']) ?><br>
-                    <?= htmlspecialchars($event['ecd_inhalt']) ?>
+                <div class="event-container">
+                    <div class="event-zustand">
+
+                        <div class="event-name"><?= htmlspecialchars($event['ecd_name'])?></div>
+                        <div class="event-inhalt"><?= htmlspecialchars($event['ecd_inhalt'])?></div>
+                        <div class="event-datum"><?= htmlspecialchars($event['ecd_datum'])?></div>
+                        <div class="bearbeit-bereich">Bearbeiten:</div>
+                        
                     <form method="post" style="display:inline;">
-                        <input type="hidden" name="userid" value="1">
-                        <input type="hidden" name="ecdid" value="<?= $event['ecdid'] ?>">
-                        <input type="text" name="ecd_name" value="<?= htmlspecialchars($event['ecd_name']) ?>">
+                        <input type="hidden" name="ecdid" value="<?= $event['ecdid']?>">
+                        <input type="text" name="ecd_name" value="<?= htmlspecialchars($event['ecd_name'])?>">
                         <input type="date" name="ecd_datum" value="<?= $event['ecd_datum'] ?>">
                         <textarea name="ecd_inhalt"><?= htmlspecialchars($event['ecd_inhalt']) ?></textarea>
-                        <button type="submit" name="edit">Bearbeiten</button>
-                        <button type="submit" name="delete">Löschen</button>
+                        <button type="submit" name="edit" class="bearbeiten">Bearbeiten</button>
+                        <button type="submit" name="delete" class="loeschen">Löschen</button>
                     </form>
+                    </div>
+                </div>
                 </li>
             <?php endforeach; ?>
         <?php else: ?>
