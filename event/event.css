@@ -1,13 +1,30 @@
-/* Global body style for dark theme */
-body {
+body{
     background-color: #1a1a1a;
     color: #fff;
     font-family: sans-serif;
 }
 
-/* Dark theme style for the todo application with 4 columns */
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-.todo-form {
+.event-name{
+    font-weight: bold;
+}
+
+.event-inhalt{
+    font-size: 15px;
+    color: #dfdfdf;
+}
+
+.event-datum{
+    font-size: 14px;
+    color: #bababa;
+}
+
+.event-form {
     width: 80%;
     max-width: 600px;
     margin: 20px auto;
@@ -16,14 +33,14 @@ body {
     border-radius: 10px;
 }
 
-.todo-form h2 {
+.event-form h2 {
     color: #fff;
     text-align: center;
     margin-top: 0;
 }
 
-.todo-form input,
-.todo-form textarea {
+.event-form input,
+.event-form textarea {
     display: block;
     width: 100%;
     padding: 10px;
@@ -35,11 +52,11 @@ body {
     box-sizing: border-box;
 }
 
-.todo-form textarea {
+.event-form textarea {
     min-height: 100px;
 }
 
-.todo-form button {
+.event-form button {
     background-color: #5a0e8b;
     color: white;
     border: none;
@@ -49,11 +66,11 @@ body {
     font-size: 16px;
 }
 
-.todo-form button:hover {
+.event-form button:hover {
     background-color: #4e0d76;
 }
 
-.todo-container {
+.event-container {
     display: flex;
     justify-content: space-between;
     width: 95%;
@@ -61,59 +78,16 @@ body {
     gap: 20px;
 }
 
-.todo-zustand {
+.event-zustand {
+    box-shadow:  0 6px 6px rgba(0,0,0,0.2);
+    border-left: 8px solid #5a0e8b;
     flex: 1;
     background-color: #444;
     border-radius: 10px;
     padding: 15px;
 }
 
-.todo-ueberschrift {
-    background-color: #222;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.todo-item {
-    background-color: #555;
-    border-left: 8px solid #5a0e8b;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 12px;
-    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
-}
-
-.todo-title {
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 8px;
-}
-
-.todo-content {
-    margin-bottom: 15px;
-    color: #ddd;
-}
-
-.todo-time {
-    font-size: 12px;
-    color: #bbb;
-    border-top: 1px solid #666;
-    padding-top: 8px;
-    margin-top: 8px;
-}
-
-.todo-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.edit-btn, .delete-btn {
+.bearbeiten, .loeschen{
     background-color: #5a0e8b;
     color: white;
     border: none;
@@ -122,14 +96,14 @@ body {
     cursor: pointer;
 }
 
-.delete-btn {
+.loeschen {
     background-color: #a94442;
 }
 
-.edit-btn:hover {
+.bearbeiten:hover {
     background-color: #4e0d76;
 }
 
-.delete-btn:hover {
+.loeschen:hover {
     background-color: #923a35;
 }

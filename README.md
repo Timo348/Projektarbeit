@@ -41,6 +41,8 @@ Projektarbeit 2bki21 2024 Lukas und Timo
     - [x] Timo
 - css
     - [x] Timo
+- Fehlerbehebung 
+    - [x] Timo
 - Fehlerbehebung das man nicht die Seite nachjedem Klick Aktualisieren muss
     - [x] Timo
 
@@ -51,6 +53,24 @@ Projektarbeit 2bki21 2024 Lukas und Timo
     - [x] Lukas
 - Css
     - [x] Lukas
+
+## User Sharing
+- Plannung
+    - [x] Timo
+- Programmierung:
+- Share Button auf To-Do.php 
+    - []
+- Share Button auf Notizen.php
+    - []
+
+## Homepage
+- Plannung
+    - [x] Timo
+- Programmierung
+    - [] Timo (noch zu machen aber ist einfach)
+- Css
+    - [] Timo (noch zu machen)
+
 
 # Doku
 - Vorwort & Inhaltsangabe & Deckblatt
@@ -69,20 +89,4 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - Event Timer Fertig machen bis 31 Wichtig
     - [] 
 - Quellenangabe
-    - [] Fertig machen bis 26. (Mittwoch)
-
-
-# Zeitplan vom 19.3 - Abgabe
-- To-Do Bearbeitung
-    - Bis 31.3 (Abgabe)
-- Dokumentation To-Do
-    - 28.3 (Freitag)
-- Quellenangabe in Dokumentation
-    - 26.3 (Mittwoch)
-- Vorwort benutze werkzeuge in Doku
-    - 26.3 (Mittwoch)
-- Notizen Css
-    - 26.3 (Mittwoch)
-
-- Dokumentation Layout
-    - 31.3 (Abgabe)
+    - []

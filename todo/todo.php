@@ -42,6 +42,8 @@ function todoSpeichern(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht eingefügt werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
@@ -65,7 +67,10 @@ function todoBearbeiten(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht bearbeitet werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
+    
 }
 
 // Abschnitt 4: Funktion To-Do Löschung
@@ -83,6 +88,8 @@ function todoLoeschen(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht gelöscht werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
@@ -103,6 +110,8 @@ function todoStatus(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do Status konnte nicht geändert werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
@@ -120,9 +129,19 @@ function todoPermanentLoeschen(PDO $db) {
         } catch (PDOException $e) {
             die("To-Do konnte nicht permanent gelöscht werden: " . $e->getMessage());
         }
+        header("Location: todo.php");
+        exit;
     }
 }
 
+// Process POST requests BEFORE any output is sent
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    todoSpeichern($db);
+    todoBearbeiten($db);
+    todoLoeschen($db);
+    todoStatus($db);
+    todoPermanentLoeschen($db);
+}
 ?>
 
 <!DOCTYPE html>
@@ -137,13 +156,12 @@ function todoPermanentLoeschen(PDO $db) {
 <body>
     <nav>
         <a class="homebutton" href="../index.html">🏠</a>
-        <a href="notizen.php">Notizen</a>
+        <a href="../notes/notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
-        <a href="../event/event.php">Timer</a>
-        <a href="../user/login.php">Login</a>
+        <a href="../event/event.php">Event</a>
+        <a href="../user/login.php">Login</a> 
     </nav>
 
-    <!-- Form to add new todos -->
     <div class="todo-form">
         <form method="POST" action="">
             <h2>Neues To-Do erstellen</h2>
@@ -153,21 +171,22 @@ function todoPermanentLoeschen(PDO $db) {
         </form>
     </div>
     
-    <!-- 4 Spalten für die Jeweiligen To-Do mit jeweils Titel, Inhalt, Zeit Ganz Unten angezeigt, Bearbeitungsknopf und Lösch knopf, Todos Sollen verschoben werden können -->
-    <div class="todo-container">
-        <!-- Spalte 1: Neu/Zu machen -->
-        <div class="todo-column">
-            <div class="column-header">To-Do</div>
+   
+    <div class="todo-container">  <!-- To-Do Listen Anzeigungscontainer -->
+        
+        <div class="todo-zustand">
+            <div class="todo-ueberschrift">To-Do</div>
             <?php
-            // Todos mit Status 1 abrufen
+            
+            // Alle Todos die den Status 1 haben also ganz links sind anzeigen.
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 1 ORDER BY todo_erstellt DESC");
             $stmt->bindParam(':userid', $_SESSION['sesid']);
             $stmt->execute();
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Erstellt: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
                 echo '<form method="POST" style="display: inline;">';
@@ -188,7 +207,7 @@ function todoPermanentLoeschen(PDO $db) {
         
         <!-- Spalte 2: In Bearbeitung -->
         <div class="todo-column">
-            <div class="column-header">In Bearbeitung</div>
+            <div class="todo-ueberschrift">In Bearbeitung</div>
             <?php
             // Todos mit Status 2 abrufen
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 2 ORDER BY todo_erstellt DESC");
@@ -197,8 +216,8 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Bearbeitet: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
                 echo '<form method="POST" style="display: inline;">';
@@ -219,7 +238,7 @@ function todoPermanentLoeschen(PDO $db) {
         
         <!-- Spalte 3: Erledigt -->
         <div class="todo-column">
-            <div class="column-header">Erledigt</div>
+            <div class="todo-ueberschrift">Erledigt</div>
             <?php
             // Todos mit Status 3 abrufen
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 3 ORDER BY todo_erstellt DESC");
@@ -228,8 +247,8 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Erledigt: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
                 echo '<form method="POST" style="display: inline;">';
@@ -249,7 +268,7 @@ function todoPermanentLoeschen(PDO $db) {
         
         <!-- Spalte 4: Gelöscht -->
         <div class="todo-column">
-            <div class="column-header">Papierkorb</div>
+            <div class="todo-ueberschrift">Papierkorb</div>
             <?php
             // Todos mit Status 4 abrufen (gelöscht)
             $stmt = $db->prepare("SELECT * FROM todo WHERE userid = :userid AND todo_status = 4 ORDER BY todo_erstellt DESC LIMIT 10");
@@ -258,17 +277,20 @@ function todoPermanentLoeschen(PDO $db) {
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . htmlspecialchars($todo['todo_titel']) . '</div>';
-                echo '<div class="todo-content">' . htmlspecialchars($todo['todo_inhalt']) . '</div>';
+                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
                 echo '<div class="todo-time">Gelöscht: ' . $todo['todo_erstellt'] . '</div>';
                 echo '<div class="todo-buttons">';
-                // Existing "Wiederherstellen" button
+
+                // Knopf Für Wiederherstelen
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<input type="hidden" name="status" value="1">';
                 echo '<button type="submit" name="todo_status" class="edit-btn">Wiederherstellen</button>';
                 echo '</form>';
-                // New "Endgültig löschen" button
+
+
+                // Knopf Löschen
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<button type="submit" name="todo_permanent_loeschen" class="delete-btn">Endgültig löschen</button>';
@@ -279,15 +301,6 @@ function todoPermanentLoeschen(PDO $db) {
             ?>
         </div>
     </div>
-
-    <?php
-    // Funktionen aufrufen
-    todoSpeichern($db);
-    todoBearbeiten($db);
-    todoLoeschen($db);
-    todoStatus($db);
-    todoPermanentLoeschen($db);
-    ?>
 
 </body>
 </html>

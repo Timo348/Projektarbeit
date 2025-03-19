@@ -58,10 +58,6 @@ try {
     die("Fehler beim Abrufen der Notizen: " . $e->getMessage());
 }
 
-// Abschnitt 4: Notiz Löschen
-// Abschnitt 5: Notiz Bearbeiten
-
-
 
 ?>
 <!DOCTYPE html>
@@ -70,19 +66,20 @@ try {
     <meta charset="UTF-8">
     <title>Meine Notizen</title>
     <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="notizen.css"> 
 </head>
 <body>
     <nav>
         <a class="homebutton" href="../index.html">🏠</a>
         <a href="notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
-        <a href="../event/event.php">Timer</a>
+        <a href="../event/event.php">Event</a>
         <a href="../user/login.php">Login</a>
     </nav>
 
     <button onclick="document.getElementById('notizForm').style.display='block';">Notiz Erstellen</button>
     <div id="notizForm" style="display:none;">
-        <form action="" method="post">
+        <form action="" method="post" name="notizen-form">
             <input type="text" name="notiz_name" placeholder="Notiz Titel">
             <br>
             <textarea name="notiz_inhalt" placeholder="Notiz Inhalt"></textarea>
