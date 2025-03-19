@@ -32,7 +32,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - PHP Code & HTML Struktur
     - [x] Timo
 - css
-    - [ ] 
+    - [ ] Fertig machen bis 26. (Mittwoch)
 
 ## To-Do
 - Plannung
@@ -42,19 +42,19 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - css
     - [x] Timo
 - Fehlerbehebung das man nicht die Seite nachjedem Klick Aktualisieren muss
-    - [ ] 
+    - [x] Timo
 
 ## Event Timer
 - Plannung
     - [x] Timo
 - Programmierung
-    - []
+    - [x] Lukas
 - Css
-    - []
+    - [x] Lukas
 
 # Doku
 - Vorwort & Inhaltsangabe & Deckblatt
-    - [x] Timo (noch nicht ganz fertig)
+    - [x] Timo (noch nicht ganz fertig) Fertig machen bis 26.
 - Login & Register
     - [x] Timo & Lukas
 - Datenbank Aufsetzen
@@ -65,7 +65,24 @@ Projektarbeit 2bki21 2024 Lukas und Timo
     - [x] Timo
 - To-Do
     - [x] Timo (1 Seite Reschtschreibung Lukas)
-- Event Timer
-    - []
+    - [] Timo (Letze Seiten schreiben)
+- Event Timer Fertig machen bis 31 Wichtig
+    - [] 
 - Quellenangabe
-    - []
+    - [] Fertig machen bis 26. (Mittwoch)
+
+
+# Zeitplan vom 19.3 - Abgabe
+- To-Do Bearbeitung
+    - Bis 31.3 (Abgabe)
+- Dokumentation To-Do
+    - 28.3 (Freitag)
+- Quellenangabe in Dokumentation
+    - 26.3 (Mittwoch)
+- Vorwort benutze werkzeuge in Doku
+    - 26.3 (Mittwoch)
+- Notizen Css
+    - 26.3 (Mittwoch)
+
+- Dokumentation Layout
+    - 31.3 (Abgabe)
