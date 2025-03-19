@@ -1,11 +1,9 @@
-/* Global body style for dark theme */
+
 body {
     background-color: #1a1a1a;
     color: #fff;
     font-family: sans-serif;
 }
-
-/* Dark theme style for the todo application with 4 columns */
 
 .todo-form {
     width: 80%;
@@ -40,7 +38,7 @@ body {
 }
 
 .todo-form button {
-    background-color: #5a0e8b;
+    background-color: #54119a;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -50,7 +48,7 @@ body {
 }
 
 .todo-form button:hover {
-    background-color: #4e0d76;
+    background-color: #4E1E84;
 }
 
 .todo-container {
@@ -63,7 +61,7 @@ body {
 
 .todo-zustand {
     flex: 1;
-    background-color: #444;
+    background-color: #363434;
     border-radius: 10px;
     padding: 15px;
 }
@@ -78,7 +76,7 @@ body {
     font-weight: bold;
 }
 
-.todo-item {
+.todo-zeug {
     background-color: #555;
     border-left: 8px solid #5a0e8b;
     border-radius: 5px;
@@ -87,18 +85,18 @@ body {
     box-shadow: 0 6px 6px rgba(0,0,0,0.2);
 }
 
-.todo-title {
+.todo-titel {
     font-weight: bold;
     color: #fff;
     margin-bottom: 8px;
 }
 
-.todo-content {
+.todo-inhalt {
     margin-bottom: 15px;
     color: #ddd;
 }
 
-.todo-time {
+.todo-zeit {
     font-size: 12px;
     color: #bbb;
     border-top: 1px solid #666;
@@ -113,7 +111,7 @@ body {
     margin-top: 10px;
 }
 
-.edit-btn, .delete-btn {
+.bearbeiten_knopf, .loesch_knopf {
     background-color: #5a0e8b;
     color: white;
     border: none;
@@ -122,14 +120,14 @@ body {
     cursor: pointer;
 }
 
-.delete-btn {
+.loesch_knopf {
     background-color: #a94442;
 }
 
-.edit-btn:hover {
+.bearbeiten_knopf:hover {
     background-color: #4e0d76;
 }
 
-.delete-btn:hover {
+.loesch_knopf:hover {
     background-color: #923a35;
 }

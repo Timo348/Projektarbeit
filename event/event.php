@@ -90,7 +90,7 @@ if (isset($_POST['delete'])) {
 
 // Ereignisse aus der Datenbank abrufen
 try {
-    $sql = "SELECT * FROM ereignisscountdown WHERE userid = :userid ORDER BY ecd_datum DESC";
+    $sql = "SELECT * FROM ereignisscountdown WHERE userid = :userid";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':userid', $userid);
     $stmt->execute();
