@@ -184,20 +184,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
-                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
-                echo '<div class="todo-time">Erstellt: ' . $todo['todo_erstellt'] . '</div>';
-                echo '<div class="todo-buttons">';
+                echo '<div class="todo-zeug" data-id="' . $todo['todoid'] . '">';
+                echo '<div class="todo-titel">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-inhalt">' . $todo['todo_inhalt'] . '</div>';
+                echo '<div class="todo-zeit">Erstellt: ' . $todo['todo_erstellt'] . '</div>';
+                echo '<div class="todo-knopf">';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<input type="hidden" name="status" value="2">';
-                echo '<button type="submit" name="todo_status" class="edit-btn">→</button>';
+                echo '<button type="submit" name="todo_status" class="bearbeiten_knopf">→</button>';
                 echo '</form>';
-                echo '<button class="edit-btn">Bearbeiten</button>';
+                echo '<button class="bearbeiten_knopf">Bearbeiten</button>';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
-                echo '<button type="submit" name="todo_loeschen" class="delete-btn">Löschen</button>';
+                echo '<button type="submit" name="todo_loeschen" class="loesch_knopf">Löschen</button>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
@@ -206,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <!-- Spalte 2: In Bearbeitung -->
-        <div class="todo-column">
+        <div class="todo-zustand">
             <div class="todo-ueberschrift">In Bearbeitung</div>
             <?php
             // Todos mit Status 2 abrufen
@@ -215,20 +215,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
-                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
-                echo '<div class="todo-time">Bearbeitet: ' . $todo['todo_erstellt'] . '</div>';
-                echo '<div class="todo-buttons">';
+                echo '<div class="todo-zeug" data-id="' . $todo['todoid'] . '">';
+                echo '<div class="todo-titel">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-inhalt">' . $todo['todo_inhalt'] . '</div>';
+                echo '<div class="todo-zeit">Bearbeitet: ' . $todo['todo_erstellt'] . '</div>';
+                echo '<div class="todo-knopf">';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<input type="hidden" name="status" value="3">';
-                echo '<button type="submit" name="todo_status" class="edit-btn">→</button>';
+                echo '<button type="submit" name="todo_status" class="bearbeiten_knopf">→</button>';
                 echo '</form>';
-                echo '<button class="edit-btn">Bearbeiten</button>';
+                echo '<button class="bearbeiten_knopf">Bearbeiten</button>';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
-                echo '<button type="submit" name="todo_loeschen" class="delete-btn">Löschen</button>';
+                echo '<button type="submit" name="todo_loeschen" class="loesch_knopf">Löschen</button>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
@@ -237,7 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <!-- Spalte 3: Erledigt -->
-        <div class="todo-column">
+        <div class="todo-zustand">
             <div class="todo-ueberschrift">Erledigt</div>
             <?php
             // Todos mit Status 3 abrufen
@@ -246,19 +246,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
-                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
-                echo '<div class="todo-time">Erledigt: ' . $todo['todo_erstellt'] . '</div>';
-                echo '<div class="todo-buttons">';
+                echo '<div class="todo-zeug" data-id="' . $todo['todoid'] . '">';
+                echo '<div class="todo-titel">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-inhalt">' . $todo['todo_inhalt'] . '</div>';
+                echo '<div class="todo-zeit">Erledigt: ' . $todo['todo_erstellt'] . '</div>';
+                echo '<div class="todo-knopf">';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<input type="hidden" name="status" value="1">';
-                echo '<button type="submit" name="todo_status" class="edit-btn">↺</button>';
+                echo '<button type="submit" name="todo_status" class="bearbeiten_knopf">↺</button>';
                 echo '</form>';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
-                echo '<button type="submit" name="todo_loeschen" class="delete-btn">Löschen</button>';
+                echo '<button type="submit" name="todo_loeschen" class="loesch_knopf">Löschen</button>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
@@ -267,7 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <!-- Spalte 4: Gelöscht -->
-        <div class="todo-column">
+        <div class="todo-zustand">
             <div class="todo-ueberschrift">Papierkorb</div>
             <?php
             // Todos mit Status 4 abrufen (gelöscht)
@@ -276,24 +276,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             
             while ($todo = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="todo-item" data-id="' . $todo['todoid'] . '">';
-                echo '<div class="todo-title">' . $todo['todo_titel'] . '</div>';
-                echo '<div class="todo-content">' . $todo['todo_inhalt'] . '</div>';
-                echo '<div class="todo-time">Gelöscht: ' . $todo['todo_erstellt'] . '</div>';
-                echo '<div class="todo-buttons">';
+                echo '<div class="todo-zeug" data-id="' . $todo['todoid'] . '">';
+                echo '<div class="todo-titel">' . $todo['todo_titel'] . '</div>';
+                echo '<div class="todo-inhalt">' . $todo['todo_inhalt'] . '</div>';
+                echo '<div class="todo-zeit">Gelöscht: ' . $todo['todo_erstellt'] . '</div>';
+                echo '<div class="todo-knopf">';
 
                 // Knopf Für Wiederherstelen
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<input type="hidden" name="status" value="1">';
-                echo '<button type="submit" name="todo_status" class="edit-btn">Wiederherstellen</button>';
+                echo '<button type="submit" name="todo_status" class="bearbeiten_knopf">Wiederherstellen</button>';
                 echo '</form>';
 
 
                 // Knopf Löschen
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
-                echo '<button type="submit" name="todo_permanent_loeschen" class="delete-btn">Endgültig löschen</button>';
+                echo '<button type="submit" name="todo_permanent_loeschen" class="loesch_knopf">Endgültig löschen</button>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';

@@ -85,7 +85,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
     - [x] Timo
 - To-Do
     - [x] Timo (1 Seite Reschtschreibung Lukas)
-    - [] Timo (Letze Seiten schreiben)
+    - [x] Timo (Letze Seiten schreiben)
 - Event Timer Fertig machen bis 31 Wichtig
     - [] 
 - Quellenangabe

@@ -15,9 +15,9 @@ if (!isset($_SESSION['sesid'])) {
     exit;
 }
 
-$userid = $_SESSION['sesid']; // Benutzer-ID aus der Session holen
+$userid = $_SESSION['sesid']; 
 
-// Event hinzufügen
+
 if (isset($_POST['add'])) {
     $ecd_name = $_POST['ecd_name'];
     $ecd_datum = $_POST['ecd_datum'];
@@ -42,7 +42,7 @@ if (isset($_POST['add'])) {
     }
 }
 
-// Event bearbeiten
+
 if (isset($_POST['edit'])) {
     $ecdid = $_POST['ecdid'];
     $ecd_name = $_POST['ecd_name'];
@@ -69,7 +69,7 @@ if (isset($_POST['edit'])) {
     }
 }
 
-// Event löschen
+
 if (isset($_POST['delete'])) {
     $ecdid = $_POST['ecdid'];
 
@@ -88,7 +88,7 @@ if (isset($_POST['delete'])) {
     }
 }
 
-// Ereignisse aus der Datenbank abrufen
+
 try {
     $sql = "SELECT * FROM ereignisscountdown WHERE userid = :userid";
     $stmt = $db->prepare($sql);
@@ -134,16 +134,23 @@ try {
                 <div class="event-container">
                     <div class="event-zustand">
 
-                        <div class="event-name"><?= htmlspecialchars($event['ecd_name'])?></div>
-                        <div class="event-inhalt"><?= htmlspecialchars($event['ecd_inhalt'])?></div>
-                        <div class="event-datum"><?= htmlspecialchars($event['ecd_datum'])?></div>
+                        <div class="event-name"><?= $event['ecd_name']?></div>
+                        <div class="event-inhalt"><?= $event['ecd_inhalt']?></div>
+                        <div class="event-datum"><?= $event['ecd_datum']?></div>
+                        <div class="countdown">
+                            <?php
+                            $eventDate = new DateTime($event['ecd_datum']);
+                            $currentDate = new DateTime();
+                            $interval = $currentDate->diff($eventDate);
+                            echo "Verbleibende Zeit: " . $interval->format('%a Tage, %h Stunden');
+                            // Diesen Abschnitt Doku php manual diff, DateTime, interval, format
+                            ?> 
                         <div class="bearbeit-bereich">Bearbeiten:</div>
-                        
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="ecdid" value="<?= $event['ecdid']?>">
-                        <input type="text" name="ecd_name" value="<?= htmlspecialchars($event['ecd_name'])?>">
+                        <input type="text" name="ecd_name" value="<?= $event['ecd_name']?>">
                         <input type="date" name="ecd_datum" value="<?= $event['ecd_datum'] ?>">
-                        <textarea name="ecd_inhalt"><?= htmlspecialchars($event['ecd_inhalt']) ?></textarea>
+                        <textarea name="ecd_inhalt"><?= $event['ecd_inhalt'] ?></textarea>
                         <button type="submit" name="edit" class="bearbeiten">Bearbeiten</button>
                         <button type="submit" name="delete" class="loeschen">Löschen</button>
                     </form>
