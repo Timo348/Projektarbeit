@@ -11,19 +11,6 @@ body {
 }
 
 
-nav {
-    background-color: #333;
-    padding: 10px 35px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 25px;
-}
-
-
 button {
     padding: 10px;
     background-color: #4E1E84;
@@ -32,7 +19,7 @@ button {
     margin-top: 20px;
     margin-bottom: 40px;
     margin-left: 35px;
-    width: 420px;
+    width: 200px;
 }
 
 
@@ -91,8 +78,21 @@ input, textarea {
     margin: 0 0 15px 0;
 }
 
+
 .note-feld hr {
     border: 0;
     border-top: 1px solid #4E1E84;
     margin: 20px 0;
+}
+
+.bearbeiten {
+    padding: 10px;
+    background-color: #4E1E84;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-left: 35px;
+    width: 420px;
+    text-decoration: none; 
 }

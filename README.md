@@ -98,10 +98,8 @@ Projektarbeit 2bki21 2024 Lukas und Timo
  - Dokumentation To-Do
      - 28.3 (Freitag)
  - Quellenangabe in Dokumentation
-     - 26.3 (Mittwoch)
+     - 26.3 (Mittwoch) 
  - Vorwort benutze werkzeuge in Doku
-     - 26.3 (Mittwoch)
- - Notizen Css
      - 26.3 (Mittwoch)
  
  - Dokumentation Layout
