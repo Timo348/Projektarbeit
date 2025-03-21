@@ -32,7 +32,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - PHP Code & HTML Struktur
     - [x] Timo
 - css
-    - [ ] Fertig machen bis 26. (Mittwoch)
+    - [x] Fertig machen bis 26. (Mittwoch)
 
 ## To-Do
 - Plannung
@@ -58,7 +58,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - Plannung
     - [x] Timo
 - Programmierung:
-- Share Button auf To-Do.php 
+- Share Button auf To-Do.php
     - []
 - Share Button auf Notizen.php
     - []
@@ -67,9 +67,9 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - Plannung
     - [x] Timo
 - Programmierung
-    - [] Timo (noch zu machen aber ist einfach)
+    - [] 
 - Css
-    - [] Timo (noch zu machen)
+    - [] 
 
 
 # Doku
