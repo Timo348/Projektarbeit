@@ -63,7 +63,7 @@ input, textarea {
 
 
 .note-feld h2 {
-    background-color: #222;
+    background-color: #1f1e1e;
     color: white;
     text-align: center;
     padding: 10px;
@@ -74,7 +74,7 @@ input, textarea {
 
 
 .note-feld p {
-    color: #ddd;
+    color: white;
     margin: 0 0 15px 0;
 }
 

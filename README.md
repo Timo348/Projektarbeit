@@ -20,7 +20,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - Datenbankplanung (Prototyp)
     - [x] Timo
 - Datenbank aufsetzung mit sqlitebrowser
-    - [x] Lukas
+    - [x] Lukas & Timo
 
 ## User Handling
 - Register Code
@@ -32,7 +32,7 @@ Projektarbeit 2bki21 2024 Lukas und Timo
 - PHP Code & HTML Struktur
     - [x] Timo
 - css
-    - [x] Fertig machen bis 26. (Mittwoch)
+    - [x] Timo
 
 ## To-Do
 - Plannung
@@ -87,9 +87,9 @@ Projektarbeit 2bki21 2024 Lukas und Timo
     - [x] Timo (1 Seite Reschtschreibung Lukas)
     - [x] Timo (Letze Seiten schreiben)
 - Event Timer Fertig machen bis 31 Wichtig
-    - [] 
+    - [x] Lukas
 - Quellenangabe
-    - []
+    - [x] Timo
 
 
  # Zeitplan vom 19.3 - Abgabe
@@ -99,5 +99,5 @@ Projektarbeit 2bki21 2024 Lukas und Timo
      - 26.3 (Mittwoch)
  - Dokumentation Layout
      - 31.3 (Abgabe)
- - User sharing
-    - einfach fertig machen hoffentlich
+ - Auslog button
+     - bis 26.3 (Mittwoch)
