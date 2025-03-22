@@ -95,11 +95,8 @@ Projektarbeit 2bki21 2024 Lukas und Timo
  # Zeitplan vom 19.3 - Abgabe
  - To-Do Bearbeitung
      - Bis 31.3 (Abgabe)
- - Dokumentation To-Do
-     - 28.3 (Freitag)
  - Vorwort - benutze werkzeuge in Doku
      - 26.3 (Mittwoch)
- 
  - Dokumentation Layout
      - 31.3 (Abgabe)
  - User sharing
