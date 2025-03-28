@@ -9,11 +9,12 @@
 <body>
 
 <nav>
-    <a class="homebutton" href="../index.html">🏠</a>
+    <a class="homebutton" href="../index.php">🏠</a>
     <a href="../notes/notizen.php">Notizen</a>
     <a href="../todo/todo.php">To-Do</a>
     <a href="../event/event.php">Event</a>
     <a href="../user/login.php">Login</a>
+    <a class="Ausloggen" href="../user/logout.php"><img src="../images/logout.png" alt=""> </a>
 </nav>
     <form class="maincontainer" action="" method="POST">
         <h2>Log In Seite</h2> 
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($pass, $datapass)) { // Vergleiche Klartext-Passwort mit Hash
             $_SESSION['sesuser'] = $result['username'];
             $_SESSION['sesid'] = $result['userid'];
-            header('Location: ../index.html');
+            header('Location: ../index.php'); // Weiterleitung zur Startseite
             exit;
         } else {
             session_abort();

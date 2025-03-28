@@ -14,6 +14,7 @@
     <a href="../todo/todo.php">To-Do</a>
     <a href="../event/event.php">Timer</a>
     <a href="../user/login.php">Login</a>
+    <a class="Ausloggen" href="../logout.php"><img src="../images/logout.png" alt=""> </a>
 </nav>
 <div class="maincontainer">
 <form action="" method="POST">

@@ -155,11 +155,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <nav>
-        <a class="homebutton" href="../index.html">🏠</a>
+        <a class="homebutton" href="../index.php">🏠</a>
         <a href="../notes/notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
         <a href="../event/event.php">Event</a>
         <a href="../user/login.php">Login</a> 
+        <a class="Ausloggen" href="../user/logout.php"><img src="../images/logout.png" alt=""> </a>
     </nav>
 
     <div class="todo-form">

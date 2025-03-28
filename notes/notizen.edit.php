@@ -94,11 +94,12 @@ function NotizLoeschen(PDO $db) {
 </head>
 <body>
     <nav>
-        <a class="homebutton" href="../index.html">🏠</a>
+        <a class="homebutton" href="../index.php">🏠</a>
         <a href="notizen.php">Notizen</a>
         <a href="../todo/todo.php">To-Do</a>
         <a href="../event/event.php">Event</a>
         <a href="../user/login.php">Login</a>
+        <a class="Ausloggen" href="../user/logout.php"><img src="../images/logout.png" alt=""> </a>
     </nav>
 
     

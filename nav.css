@@ -29,6 +29,21 @@ nav {
     border-radius: 20px;
 }
 
+.Ausloggen {
+    position: absolute;
+    display: inline-block;
+    background-color: #54119a;
+    width: 60px;
+    height: 60px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    line-height: 60px;
+    margin-left: 1200px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
 nav a {
     display: inline-block;
     background-color: #54119a;
