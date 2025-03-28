@@ -168,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="todo_titel" placeholder="Titel" required>
             <textarea name="todo_inhalt" placeholder="Inhalt" required></textarea>
             <button type="submit" name="neue_todo">Hinzufügen</button>
+            <a href="todo.edit.php" class="bearbeiten_knopf">Bearbeiten</a>
         </form>
     </div>
     
@@ -194,7 +195,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo '<input type="hidden" name="status" value="2">';
                 echo '<button type="submit" name="todo_status" class="bearbeiten_knopf">→</button>';
                 echo '</form>';
-                echo '<button class="bearbeiten_knopf">Bearbeiten</button>';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<button type="submit" name="todo_loeschen" class="loesch_knopf">Löschen</button>';
@@ -225,7 +225,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo '<input type="hidden" name="status" value="3">';
                 echo '<button type="submit" name="todo_status" class="bearbeiten_knopf">→</button>';
                 echo '</form>';
-                echo '<button class="bearbeiten_knopf">Bearbeiten</button>';
                 echo '<form method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="todoid" value="' . $todo['todoid'] . '">';
                 echo '<button type="submit" name="todo_loeschen" class="loesch_knopf">Löschen</button>';

@@ -16,7 +16,7 @@ if (!isset($_SESSION['sesid'])) {
     exit;
 }
 
-// Funktionen ausführen wenn POST-Anfragen vorliegen
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['bearbeiten'])) {
         NotizBearbeiten($db);
@@ -107,24 +107,13 @@ function NotizLoeschen(PDO $db) {
     foreach ($notizen as $notiz) {
         echo '<div class="note-feld">';
         echo '<form method="post">';
-        
-        // Verstecktes Feld für Notiz-ID
         echo '<input type="hidden" name="notizid" value="' . $notiz['notizid'] . '">';
-        
-        // Titel als Eingabefeld
-        echo '<input type="text" name="notiz_name" value="' . htmlspecialchars($notiz['notiz_name']) . '">';
-        
-        // Inhalt als Textfeld
-        echo '<textarea name="notiz_inhalt" rows="5">' . htmlspecialchars($notiz['notiz_inhalt']) . '</textarea>';
-        
-        // Zeitstempel als nicht-editierbare Informationen
+        echo '<input type="text" name="notiz_name" value="' . $notiz['notiz_name'] . '">';
+        echo '<textarea name="notiz_inhalt" rows="5">' . $notiz['notiz_inhalt'] . '</textarea>';
         echo "<p>Erstellt: " . $notiz['notiz_erstellt'] . "</p>";
         echo "<p>Bearbeitet: " . $notiz['notiz_bearbeitet'] . "</p>";
-
-        // Buttons mit Namen für die Formularverarbeitung
         echo '<button type="submit" name="bearbeiten">Speichern</button>';
         echo '<button type="submit" name="loeschen">Löschen</button>';
-        
         echo '</form>';
         echo "<hr>";
         echo "</div>";

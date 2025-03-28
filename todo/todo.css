@@ -47,6 +47,17 @@ body {
     font-size: 16px;
 }
 
+.todo-form a {
+    background-color: #54119a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
 .todo-form button:hover {
     background-color: #4E1E84;
 }
