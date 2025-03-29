@@ -1,4 +1,4 @@
-/* Hier kommen die Navbar changes rein von unserer Auswahlleiste am oberen Bildschirmrand */
+
 body {
     font-family: Helvetica;
     margin-top: 0px;
@@ -23,7 +23,7 @@ nav {
     color: white;
     text-align: center;
     text-decoration: none;
-    line-height: 60px;
+    line-height: 50px;
     margin-right: 1200px;
     margin-top: 10px;
     border-radius: 20px;
