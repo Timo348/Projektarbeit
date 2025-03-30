@@ -55,7 +55,7 @@ else {
         }
         echo "</div>";
 
-    }
+    
         $stmt = $db->prepare("SELECT * FROM ereignisscountdown ORDER BY ecd_datum DESC LIMIT 1");
         $stmt->execute();
         $event = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -89,7 +89,7 @@ else {
         echo "</div>";
         echo "</div>";
 
-
+    }
 ?>
 
 
