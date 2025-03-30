@@ -134,7 +134,7 @@ function todoPermanentLoeschen(PDO $db) {
     }
 }
 
-// Process POST requests BEFORE any output is sent
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     todoSpeichern($db);
     todoBearbeiten($db);

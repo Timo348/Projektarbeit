@@ -27,7 +27,7 @@
 </form>
 <?php
 ini_set('display_errors', '1');
-// Datenbankverbindung herstellen
+
 try {
     $db = new PDO('sqlite:' . __DIR__ . '/../database/projektdatenbank.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,7 +38,7 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST')  {
     $username = trim($_POST['usrnm']);
     $password = password_hash(trim($_POST['passwd']), PASSWORD_BCRYPT);
-    // Passwort noch hashen
+
     try {
         $statement = $db->prepare("INSERT INTO account (username, password) VALUES (:username, :password)");
         $statement->bindParam(':username', $username);

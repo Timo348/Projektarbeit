@@ -144,7 +144,7 @@ try {
                             $currentDate = new DateTime();
                             $interval = $currentDate->diff($eventDate);
                             echo "Verbleibende Zeit: " . $interval->format('%a Tage, %h Stunden');
-                            // Diesen Abschnitt Doku php manual diff, DateTime, interval, format
+
                             ?> 
                         <div class="bearbeit-bereich">Bearbeiten:</div>
                     <form method="post" style="display:inline;">

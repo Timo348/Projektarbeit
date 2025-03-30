@@ -29,7 +29,6 @@ if (!isset($_SESSION['sesid'])) {
 else {
     echo "<h1>Willkommen auf unserer Website von unserer Projektarbeit :D </h1>";
     echo "<h2>Sie sind eingeloggt als " . $_SESSION['sesuser'] . "</h2>";
-    // Letze bearbeitete sache von Notizen, Event und 2 Letze Todo anzeigen noch Programmieren
     echo "</div>";
 
     echo "<div class='Anzeige'>";
@@ -69,7 +68,6 @@ else {
                             $currentDate = new DateTime();
                             $interval = $currentDate->diff($eventDate);
                             echo "Verbleibende Zeit: " . $interval->format('%a Tage, %h Stunden');
-                            // Diesen Abschnitt Doku php manual diff, DateTime, interval, format
         } else {
             echo "<h2>Keine Events gefunden.</h2>";
         }

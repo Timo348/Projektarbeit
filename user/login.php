@@ -39,19 +39,19 @@ try {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
     $user = trim($_POST['username']);
-    $pass = trim($_POST['passwort']); // Klartext-Passwort
+    $pass = trim($_POST['passwort']); 
 
-    $statement = $db->prepare("SELECT * FROM account WHERE username = :username"); // Wert aus der Tabelle account holen
+    $statement = $db->prepare("SELECT * FROM account WHERE username = :username");
     $statement->bindParam(':username', $user);
     $statement->execute();
 
-    $result = $statement->fetch(PDO::FETCH_ASSOC); // Tabelle als Array ausgeben
+    $result = $statement->fetch(PDO::FETCH_ASSOC); 
     if ($result) {
         $datapass = $result['password'];
-        if (password_verify($pass, $datapass)) { // Vergleiche Klartext-Passwort mit Hash
+        if (password_verify($pass, $datapass)) { 
             $_SESSION['sesuser'] = $result['username'];
             $_SESSION['sesid'] = $result['userid'];
-            header('Location: ../index.php'); // Weiterleitung zur Startseite
+            header('Location: ../index.php'); 
             exit;
         } else {
             session_abort();
